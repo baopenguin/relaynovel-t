@@ -1,0 +1,30 @@
+<% if users.any? %>
+  <% users.each do |user| %>
+    <div class="novel-border media-body show mt-4">
+      <a href="<%= user_path(user) %>" class="linkbox">
+        <p class="mb-0" style="font-weight:bold;"><%= user.name %></p>
+        <% unless user.self_introduction == nil %>
+          <%= user.self_introduction %>
+        <% end %>
+      </a>
+   
+      <% if current_user.present? %>
+        <% if current_user != user %>
+          <% if current_user.following?(user) %>
+            <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), local: true, method: :delete) do |f| %>
+              <%= hidden_field_tag :follow_id, user.id %>
+              <%= f.submit 'フォローを解除する', class: 'btn btn-sm user_follow' %>
+            <% end %>
+          <% else %>
+            <%= form_with(model: current_user.relationships.build, local: true) do |f| %>
+              <%= hidden_field_tag :follow_id, user.id %>
+              <%= f.submit 'フォローする', class: 'btn btn-sm mt-2 user_follow2' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="nothing" >ユーザーはいません。</p>
+<% end %>

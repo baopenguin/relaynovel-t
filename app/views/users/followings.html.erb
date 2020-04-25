@@ -1,0 +1,23 @@
+<div class="row">
+  <aside class="col-lg-3">
+    <div class="sample_box_title"><p><%= @user.name %></p></div>
+    <div class="sample_box3_2">
+      <p class="pre-wrap"><%= @user.self_introduction %></p>
+      <% if @user.twitter.present? %>
+        <a href="https://twitter.com/<%= @user.twitter %>" target="blank" class="btn-animation-02 mb-2 show-twitter"><span class="btn-span"><i class="fab fa-twitter mr-2"></i>Twitter</span></a>
+      <% end %>
+      <% if current_user == @user %>
+        <a href="<%= edit_user_path %>" class="btn-animation-02"><span class="btn-span">プロフィールを編集</span></a>
+      <% end %>
+    </div>
+    <%= render 'relationships/follow_button', user: @user %>
+  </aside>
+  <div class="col-lg-9">
+    <a href="<%= user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(user_path(@user)) %>">オリジナル  <span class="badge badge-secondary"><%= @count_novels_self %></span></a>
+    <a href="<%= relaied_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(relaied_user_path(@user)) %>">リレー  <span class="badge badge-secondary"><%= @count_novels_relay %></span></a>
+    <a href="<%= followings_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(followings_user_path(@user)) %>">フォロー  <span class="badge badge-secondary"><%= @count_followings %></span></a>
+    <a href="<%= followers_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(followers_user_path(@user)) %>">フォロワー  <span class="badge badge-secondary"><%= @count_followers %></span></a>
+    <a href="<%= likes_user_path %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(likes_user_path) %>">いいね　<span class="badge badge-secondary"><%= @count_favorites %></span></a>
+    <%= render 'users', users: @followings %>
+  </div>
+</div>

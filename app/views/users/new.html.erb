@@ -1,0 +1,40 @@
+<div class="text-center login-account">
+  <h1 class="mb-0">アカウント登録フォーム</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+    
+      <div class="form-group">
+        <%= f.label :name, 'お名前', class:'form-color' %><span class="ml-1 attention">*</span>
+        <%= f.text_field :name, class: 'form-control', placeholder: '最大15文字まで入力できます' %>
+      </div>
+    
+       <div class="form-group">
+        <%= f.label :email, 'メールアドレス', class:'form-color' %><span class="ml-1 attention">*</span>
+        <%= f.text_field :email, class: 'form-control', placeholder: 'ログインに使用するアドレスを入力してください' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :password, 'パスワード', class:'form-color' %><span class="ml-1 attention">*</span>
+        <%= f.password_field :password, class: 'form-control', placeholder: '半角大小英・数字を組み合わせて8～16文字の間で作成してください' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :password_confirmation, '確認用パスワード', class:'form-color' %><span class="ml-1 attention">*</span>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードをもう一度入力してください' %>
+      </div>
+      
+      <p class="mt-3"></p>
+      
+      <%= f.submit 'アカウント登録', class: 'btn login-account-btn', style:'font-weight:bold;' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center">
+  <p class="mt-3">すでにアカウントをお持ちの方は<%= link_to 'こちらからログイン', login_path %></p>
+</div>

@@ -1,0 +1,34 @@
+<header class="mb-4 fixed-top">
+  <nav class="navbar navbar-expand-sm">
+    <a class="navbar-brand nav-links font-weight-bold" style="font-size:20px;" href="/">RelayNovel<span class="ml-2">リレー小説投稿サイト</span></a>
+    
+    <!--<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">-->
+      <ul class="navbar-nav" style="margin:0 0 0 auto;">
+        <% if logged_in? %>
+          <div class="dropdown shadow-none" style="display:inline-block;">
+            <button type="button" class="btn dropdown-toggle font-weight-bold" id="dropdownMenuButton" style='transition:0.5s;' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">メニュー</button>
+            <div class="dropdown-menu dropdown-menu-right shadow-none" style="background-color:white;" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item font-weight-bold" style="color:gray;" href="<%= user_path(current_user) %>">マイページ</a>
+              <a class="dropdown-item font-weight-bold" style="color:gray;" href="<%= new_novel_path %>">新規ストーリー作成</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item font-weight-bold" style="color:gray;" href="<%= novels_about_path %>">サイト紹介</a>
+              <a class="dropdown-item font-weight-bold" style="color:gray;" href="<%= novels_qanda_path %>">Q & A</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item font-weight-bold" style="color:gray;" href="<%= logout_path %>" data-method="delete">ログアウト</a>
+            </div>
+          </div>
+        <% else %>
+          <li class="nav-item res"><%= link_to 'アカウント登録', signup_path, class: 'nav-links mr-3 font-weight-bold', style:'transition:0.5s;' %></li>
+          <li class="nav-item res"><%= link_to 'ログイン', login_path, class: 'nav-links font-weight-bold', style:'transition:0.5s;' %></li>
+          <div class="dropdown shadow-none submenue">
+            <button type="button" class="btn dropdown-toggle font-weight-bold" id="dropdownMenuButton" style='transition:0.5s;' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">メニュー</button>
+            <div class="dropdown-menu dropdown-menu-right shadow-none" style="background-color:white;" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item font-weight-bold" style="color:gray;" href="<%= signup_path %>">アカウント登録</a>
+              <a class="dropdown-item font-weight-bold" style="color:gray;" href="<%= login_path %>">ログイン</a>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    <!--</div>-->
+  </nav>
+</header>
