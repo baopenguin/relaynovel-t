@@ -1,3 +1,1089 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.btn:focus{
+  box-shadow:none;
+}
+
+.font{
+  font-family: dcsymbols, 游明朝, YuMincho, "ヒラギノ明朝 Pr6N", "Hiragino Mincho Pr6N", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 StdN", "Hiragino Mincho StdN", HiraMinProN-W3, serif;
+}
+
+/*js用*/
+
+.jcount{
+  color:#494949;
+}
+
+.jscount{
+  color:#ef5350;
+}
+ 
+/*共通デザイン*/
+
+* {
+  list-style: none;
+  font-family: "游ゴシック", "YuGothic", "メイリオ", meiryo, sans-serif;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+header{
+  background-color: #ffd3a8;
+}
+
+footer{
+  font-size:17px;
+  border-top:2px solid #202020;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn{
+  display: block;
+  margin: 0 auto;
+}
+
+.button-font{
+  font-size:20px;
+  margin:0;
+}
+
+.pv-fav-foot-time{
+  font-size:15px;
+  color:gray;
+}
+
+.icon{
+  margin-right: 5px;
+}
+
+.icon-float{
+  float:left;
+}
+
+.fa-heart{
+  color: #ffa8d3;
+}
+
+.count{
+  font-size:15px;
+  color: gray;
+}
+
+.pre-wrap{
+  white-space: pre-wrap;
+}
+
+.linkbox{
+  display:inline-block;
+  width:100%;
+  color:gray;
+}
+
+.linkbox:hover{
+  text-decoration:none;
+  color:gray;
+}
+
+
+/*navbar*/
+.nav-links{
+  color:#fff;
+  display: block;
+  padding: .2rem .5rem;
+}
+
+.nav-links span{
+  color:white;
+  font-size:13px;
+}
+
+.nav-links:hover span{
+  color:gray;
+  text-decoration:none;
+}
+
+.nav-links:hover{
+  color:gray;
+  text-decoration:none;
+}
+
+.nav-item .nav-links{
+  padding:4px 12px;
+  border :2px solid white;
+  border-radius:7px;
+  font-size:15px;
+}
+
+.nav-item .nav-links:hover{
+  background-color:white;
+  color:#ffd3a8;
+}
+
+.dropdown button{
+  font-size:15px;
+  color:white;
+  background-color:#ffd3a8;
+  border:2px solid white;
+}
+
+.dropdown button:hover{
+  color:#ffd3a8;
+  background-color:white;
+  border:2px solid #ffd3a8;
+}
+
+.dropdown-item{
+  font-size:15px;
+}
+
+.nothing{
+  margin:20px 0 0 10px;
+  color:gray;
+}
+
+/* novels/index */
+
+@keyframes show{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes hide{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+.toppage-box{
+  height:100%;
+  position:relative;
+  margin-bottom:20px;
+}
+
+.top-exp{
+  background-color:rgba(0,0,0,0.5);
+  display:none;
+  color:white;
+}
+
+.toppage-box:hover .top-exp{
+  display:block;
+  animation: show 0.7s linear 0s;
+}
+
+.top-exp a{
+  font-weight:bold;
+}
+
+.toppage-box div{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+}
+
+.toppage-box a{
+  border: solid 3px #a8d3ff;
+  transition: all 0.6s ease 0s;
+  color:#a8d3ff;
+  width:30%;
+  padding: 10px 0;
+  margin-top:30px;
+}
+
+.toppage-box a:hover{
+  background-color:#a8d3ff;
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
+  color:#fff;
+}
+
+.side h2{
+  border-bottom: 5px solid #ffd3a8;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 30px 0 7px 10px;
+}
+
+.fa-crow, .fa-egg{
+  margin-right:5px;
+}
+
+.toppage-title{
+  font-size: 20px;
+  font-weight: bold;
+  line-height:300%;
+}
+
+.index-search{
+  width:100%;
+  padding:12px;
+  text-align:center;
+  border-radius:5px;
+  font-weight:bold;
+  color:#b0c4de;
+  border:2px solid #b0c4de;
+}
+
+.index-search:hover{
+  text-decoration:none;
+  background-color:#f8f8ff;
+  color:#b0c4de;
+}
+
+.active-tag{
+  background-color: #a8d3ff !important;
+  color:white !important;
+  border:none;
+}
+
+.side{
+  font-size:14px;
+}
+
+.novel-border{
+  border-left: 2px solid gray;
+  padding:10px;
+  margin-bottom: 10px;
+}
+
+.display{
+  display: inline-block;
+  font-size:15px;
+  margin:0;
+}
+  
+.title{
+  font-weight: bold;
+}
+
+.fa-book-open{
+  font-size:40px;
+  margin-right:7px;
+  padding-top:15px;
+}
+
+/*application*/
+
+.main{
+  padding-top: 70px;
+}
+
+/*users/new*/
+.attention{
+  font-size:13px;
+  color:red;
+}
+
+/*novels/new*/
+
+.form-color{
+  padding: 0.25em 0.5em;
+  color: #494949;
+  font-weight:bold;
+  background: transparent;
+  border-left: solid 5px #FFD3A8;
+  margin-bottom:10px;
+}
+
+.login-account{
+  width:540px;
+  margin:20px auto 20px auto;
+  background-color:#a8d3ff;
+  padding:10px 0px;
+  border-radius:3rem;
+  color:#fff;
+}
+
+.login-account-btn{
+  border: solid 3px #a8d3ff;
+  transition: all 0.6s ease 0s;
+  color:#a8d3ff;
+  width:50%;
+}
+.login-account-btn:hover{
+  background-color:#a8d3ff;
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
+  color:#fff;
+}
+
+.login-account h1{
+  font-size:25px;
+}
+
+/*novels/show*/
+
+.reviewname{
+  font-weight:bold;
+  color:black;
+}
+
+.reviewname:hover{
+  color:black;
+}
+
+.nextlink{
+  color:gray;
+}
+
+.nextlink:hover{
+  color:gray;
+  text-decoration:none;
+}
+
+.btn-partial-line {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  border-bottom: solid 3px #668ad8;
+  border-left: solid 3px #668ad8;
+  color: #668ad8;
+  transition: .4s;
+}
+
+.btn-partial-line:hover {
+  padding-left: 0.7em;
+  padding-right: 0.3em;
+  text-decoration:none;
+  color:#668ad8;
+}
+.btn-circle-border-double:hover {
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+
+.right{
+  float: right;
+}
+
+.delete-button{
+  border: solid 3px #ff6060;
+  background-color:#ffa8a8;
+  color:#fff;
+  font-weight:bold;
+  width:25%;
+  margin: 0 20px 0 auto;
+}
+
+.heading{
+  font-weight:bold;
+  display:inline-block;
+  margin-bottom:20px;
+}
+
+span{
+  font-size:20px;
+  color:gray;
+}
+
+.showdesign{
+  text-align:center;
+}
+
+.showdesign .one{
+  font-weight:bold;
+  font-size:3em;
+  margin:0;
+}
+
+.showdesign .two{
+  font-size:1.3em;
+  color:gray;
+}
+
+.nextcolor{
+  color:gray;
+  display:inline-block;
+  margin:0;
+}
+
+.fa-info-circle{
+  font-size:13px;
+}
+
+.nextinfo{
+  color:gray;
+  display:inline-block;
+  font-size:13px;
+  margin-left:5px;
+}
+
+/*novels/_novels,_relaied_novels*/
+.media-body{
+  border-left: 2px solid gray;
+  padding:10px 0 5px 10px;
+}
+
+.show:hover{
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+  border-radius:4px;
+}
+
+.secret{
+  display:none;
+}
+
+.show:hover .secret{
+  display:block;
+}
+
+.show:hover .secret2{
+  display:inline-block;
+}
+
+.show:hover .hover{
+  color:gray;
+}
+
+.secrethover{
+  color:gray;
+  font-size:13px;
+  padding-top:20px;
+}
+
+.show:hover .secrethover{
+  display:none;
+}
+
+/*アバウト*/
+.ribbon11-wrapper {  
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 90%;
+  background: #f1f1f1;
+}
+.ribbon11 {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0 0 0 -20px;
+  width: calc(100% + 20px);
+  font-size: 22px;
+  color: white;
+  background: #70c7ff;
+  font-weight:bold;
+}
+.ribbon11:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #6eb3e0;
+}
+
+.ribbonhonbun{
+  margin:20px;
+  font-family: dcsymbols, 游明朝, YuMincho, "ヒラギノ明朝 Pr6N", "Hiragino Mincho Pr6N", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 StdN", "Hiragino Mincho StdN", HiraMinProN-W3, serif;
+  font-size:17px;
+}
+
+#about-one{
+    display: block;
+    padding-top: 110.06px;
+    margin-top: -85.06px;
+}
+
+#about-two{
+    display: block;
+    padding-top: 110.06px;
+    margin-top: -85.06px;
+}
+
+#about-three{
+    display: block;
+    padding-top: 110.06px;
+    margin-top: -85.06px;
+}
+
+#about-four{
+    display: block;
+    padding-top: 110.06px;
+    margin-top: -85.06px;
+}
+
+.details h3{
+  margin:30px 10px 20px 0;
+}
+
+.details h3 span{
+  font-size:30px;
+  padding:15px;
+}
+ 
+.aboutoutline {
+position: relative;
+padding: .5em;
+display:inline-block;
+font-size:20px;
+}
+
+.aboutoutline:after {
+position: absolute;
+left: 0;
+bottom: 0;
+content: '';
+width: 100%;
+height: 0;
+border-bottom: 2px solid #444;
+}
+
+/*Q & A*/
+
+.question{
+  margin:10px 0 0 20px;
+}
+
+
+
+/*パーシャル関係*/
+
+.yes-button{
+  font-weight:bold;
+  background-color:#a8d3ff;
+  color:white;
+  border: solid 3px #60afff;
+  width:25%;
+  margin: 0 20px 0 auto;
+}
+
+/*ボタン関係*/
+
+.btn-flat-logo {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #83ccd2;
+  transition: .4s;
+}
+
+.btn-flat-logo:hover {
+  background: #1ec7bb;
+  text-decoration:none;
+  color:white;
+}
+
+.btn-flat-vertical-border {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-left: solid 4px #668ad8;
+  border-right: solid 4px #668ad8;
+  color: #668ad8;
+  background: #e1f3ff;
+  transition: .4s;
+}
+
+.btn-flat-vertical-border:hover {
+  background: #668ad8;
+  color: #FFF;
+  text-decoration:none;
+}
+
+.btn-animation-02 {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  background-color: #9ec34b;
+  border: 2px solid #9ec34b;
+  font-size: 16px;
+  color: #9ec34b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.btn-animation-02 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-animation-02::before,
+.btn-animation-02::after {
+  content: "";
+  display: block;
+  background-color: #FFF;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: .2s;
+}
+.btn-animation-02::before {
+  left: 0;
+}
+.btn-animation-02::after {
+  right: 0;
+}
+
+.btn-animation-02:hover:before,
+.btn-animation-02:hover:after {
+  width: 0;
+  background-color: #FFF;
+}
+
+.btn-animation-02:hover {
+  color: #FFF;
+  text-decoration:none;
+}
+
+.show-twitter{
+  background-color: #55acee;
+  border: 2px solid #55acee;
+}
+
+.show-twitter span{
+  color:#55acee;
+}
+
+.show-twitter:hover span{
+  color:white;
+}
+
+
+.active-ranking{
+  background: #1ec7bb;
+}
+
+.active-show{
+  background: #668ad8;
+  color: #FFF;
+}
+
+.btn-span{
+  color:#9ec34b;
+  font-size:15px;
+}
+
+.btn-animation-02:hover .btn-span{
+  color:#FFF;
+  text-decoration:none;
+}
+
+.btn-social-flat { 
+  color: #484848;
+  display: inline-block;
+  height: 35px;
+  font-size: 20px;
+  line-height: 35px;
+  background: #eaeef1;
+  text-decoration: none;
+  margin: 0.5em 1em 1em 0;
+}
+
+.btn-social-flat-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  color: white;
+}
+.btn-social-flat-icon i {
+  font-size: 20px;
+  line-height: 35px;
+  transition: .3s;
+}
+.btn-social-flat-text {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  font-size:17px;
+}
+
+.btn-social-flat-icon--twitter {
+  background:#1da1f3;
+}
+
+.btn-social-flat:hover .btn-social-flat-icon i{
+  -webkit-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+}
+
+.btn-social-flat:hover{
+  text-decoration:none;
+}
+
+.btn-social-flat:hover .btn-social-flat-icon{
+  background-color:#0092ed;
+  
+}
+
+
+/*ボックス関係*/
+
+.sample_box3_2 {
+    margin-top: 0;
+    padding: 1em 1.5em;
+    background: #fff2e4;
+    color: #000000;
+}
+
+.sample_box3_2 .prewrap{
+  color:#494949;
+}
+
+.sample_box_title { 
+    padding: 0.5em 0.5em 0.4em;
+    text-align: center;
+    font-size: 1.3em;
+    background: #ff9b38;
+    border-bottom: 3px solid #ff7f00;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.sample_box_title p {
+    margin-bottom: 0;
+}
+
+.cautionbox{
+  margin: 1em 0;
+  background-color: #ffebee;
+  padding: 1em;
+}
+
+.cautionbox-title{
+  color: #ef5350;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cautionbox-title:before{
+  font-size: 17px;
+}
+
+.cautionbox p{
+  margin: 0;
+  padding: 0;
+}
+
+.honbun{
+	position: relative;
+	text-align: center;
+	font-size:20px;
+}
+.honbun::before{
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #000;
+	background: linear-gradient(-45deg, transparent, #009FB7 10%, #009FB7 90%, transparent);
+}
+.honbun span{
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+	padding: 0 20px;
+	/*background-color: rgba(255,255,250);*/
+	text-align: left;
+	color:#009FB7;
+}
+
+.box{
+  border: 3px double #009FB7;
+  position: relative;
+  margin-top: 1em;
+}
+.box h3{
+  text-align: left;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: -22px;
+}
+.box span{
+  padding: 0 .5em;
+  background: #FFF;
+  color: #009FB7;
+}
+.box .inner{
+  padding: 1.2em .5em .5em;
+}
+
+.aboutback{
+  background-color: #f1f8fe;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0,
+            color-stop(.25, #fff), color-stop(.25, transparent),
+            color-stop(.5, transparent), color-stop(.5, #fff),
+            color-stop(.75, #fff), color-stop(.75, transparent),
+            to(transparent));
+  background-image: -webkit-linear-gradient(45deg, #fff 25%, transparent 25%,
+          transparent 50%, #fff 50%, #fff 75%,
+          transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, #fff 25%, transparent 25%,
+          transparent 50%, #fff 50%, #fff 75%,
+          transparent 75%, transparent);
+  background-image: -ms-linear-gradient(45deg, #fff 25%, transparent 25%,
+          transparent 50%, #fff 50%, #fff 75%,
+          transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, #fff 25%, transparent 25%,
+          transparent 50%, #fff 50%, #fff 75%,
+          transparent 75%, transparent);
+  background-image: linear-gradient(45deg, #fff 25%, transparent 25%,
+          transparent 50%, #fff 50%, #fff 75%,
+          transparent 75%, transparent);
+  -webkit-background-size: 10px 10px;
+  -moz-background-size: 10px 10px;
+  background-size: 10px 10px;
+  padding:10px 20px;
+  margin-top:25px;
+}
+
+/*アバウト Q & A*/
+
+.ribbon1 {
+  display: inline-block;
+  position: relative;
+  height: 50px;/*リボンの高さ*/
+  line-height: 50px;/*リボンの高さ*/
+  text-align: center;
+  padding: 0 30px;/*横の大きさ*/
+  font-size: 18px;/*文字の大きさ*/
+  background: #f57a78;/*塗りつぶし色*/
+  color: #FFF;/*文字色*/
+  box-sizing: border-box;
+  margin:0 auto;
+  font-weight:bold;
+  font-size:35px;
+}
+
+.ribbon1:before, .ribbon1:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.ribbon1:before {
+  top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.ribbon1:after {
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+.balloon5 {
+  width: 100%;
+  margin: 1.5em 0;
+  overflow: hidden;
+}
+
+.balloon5 .faceicon {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
+}
+
+.balloon5 .faceicon img{
+  width: 100%;
+  height: auto;
+  border: solid 3px #d7ebfe;
+  border-radius: 50%;
+}
+
+.balloon5 .chatting {
+  width: 100%;
+}
+
+.says {
+  display: inline-block;
+  position: relative; 
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px; 
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid #d7ebfe;
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+.box8 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+}
+.box8 p {
+    margin: 0; 
+    padding: 0;
+}
+
+/*ランキング*/
+.ranking-number{
+  display:inline-block;
+  padding:8px 10px;
+  border-radius:20px;
+  border:2px solid #83ccd2;
+}
+
+/*アイコン*/
+.fa-comment{
+  color:#90ee90;
+}
+
+.fa-pen-nib{
+  color:#87cefa;
+}
+
+.fa-shoe-prints{
+  color:#cd853f;
+}
+
+
+@media screen and (max-width:420px) {
+
+  .navbar{
+    padding: 4px;
+  }
+
+  .navbar-brand{
+    margin:0;
+  }
+
+  .navbar-nav{
+    margin:0;
+  }
+
+}
+
+.submenue{
+  display:none;
+}
+
+.dropdown{
+  background-color:none;
+}
+
+@media screen and (max-width:580px) {
+  .res{
+    display:none;
+  }
+  
+  .dropdown{
+    display:inline-block;
+  }
+}
+
+@media screen and (max-width:1200px) {
+  .btn-animation-02{
+    width:95%;
+  }
+}
+
+@media screen and (max-width:1200px) {
+
+  .sample_box3_2{
+    margin-bottom:8px;
+  }
+  
+  .btn-flat-vertical-border{
+    display:inline-block;
+    width:100%;
+  }
+  
+}
+
+@media screen and (max-width:405px) {
+  .taikai{
+    width:35%;
+  }
+}
+
+.user_follow{
+  border: solid 3px #ff6060;
+  background-color:#ffa8a8;
+  color:#fff;
+  font-weight:bold;
+  width:25%;
+  margin: 0 20px 0 auto;
+}
+
+.user_follow2{
+  font-weight:bold;
+  background-color:#a8d3ff;
+  color:white;
+  border: solid 3px #60afff;
+  width:25%;
+  margin: 0 20px 0 auto;
+}
+
+@media screen and (max-width:780px) {
+  .delete-button{
+    width:100%;
+  }
+  
+  .yes-button{
+    width:100%;
+  }
+  
+  .user_follow{
+    width:100%;
+  }
+  
+  .user_follow2{
+    width:100%;
+  }
+}
+
+
+@media screen and (max-width:440px) {
+  
+  .btn-flat-logo{
+    display:inline-block;
+    width:100%;
+  }
+}
+
+@media screen and (max-width:1200px) {
+  .toppage-box:hover .top-exp{
+    display:none;
+  }
+}
