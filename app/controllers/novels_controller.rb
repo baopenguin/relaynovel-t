@@ -79,7 +79,7 @@ class NovelsController < ApplicationController
     # @comments = @novel.comments
     @comment = Comment.new
     
-    impressionist(@novel, nil)
+    # impressionist(@novel, nil)
     
   end
 
