@@ -33,6 +33,8 @@ module Relaynovel2
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     config.time_zone = 'Tokyo'
     
+    config.assets.css_compressor = :sass
     config.assets.enabled = true
+    config.assets.compile = true
   end
 end
