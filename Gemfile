@@ -62,7 +62,8 @@ gem 'jquery-turbolinks'
 
 gem 'redis-rails'
 
+gem 'rails_12factor'
+
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
-  gem 'rails_12factor'
 end
