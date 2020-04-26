@@ -54,6 +54,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 gem 'impressionist'
 gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+gem "jquery-rails"
+gem 'jquery-turbolinks'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
