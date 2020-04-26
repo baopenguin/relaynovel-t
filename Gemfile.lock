@@ -65,6 +65,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    impressionist (2.0.0)
+      nokogiri (~> 1)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     kaminari (1.2.0)
@@ -100,6 +102,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    pg (1.2.3)
     puma (3.12.4)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -182,10 +185,12 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)
+  impressionist
   jbuilder (~> 2.5)
   kaminari
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
+  pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.2)
   sass-rails (~> 5.0)

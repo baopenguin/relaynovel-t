@@ -47,8 +47,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: relaynovel2_production
   username: relaynovel2
-  password: <%= ENV['RELAYNOVEL2_DATABASE_PASSWORD'] %>
+  password: <%= ENV['relaynovel2_DATABASE_PASSWORD'] %>
