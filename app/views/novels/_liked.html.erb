@@ -1,0 +1,58 @@
+<% unless novels.present? %>
+  <p class="nothing">ストーリーはありません。</p>
+<% else %>
+  <% novels.each do |novel| %>
+  <div class="novel-border media-body show mt-4 pr-4">
+    <a href="<%= novel_path(novel) %>" class="linkbox pr-4">
+      <% if novel.id == novel.parent_id %>
+        <p class='font font-weight-bold pre-wrap' style='font-size:20px;'><%= novel.outline.truncate(100) %></p>
+        <p class="secrethover"><i class="fas fa-book-reader"></i>　カーソルを合わせて詳細を確認する</p>
+        <div class="form-color mt-3 secret">
+          <p class="display title hover secret secret2" style="color:#494949;">『<%= novel.title %>』</p>
+          <object><p class="display hover secret secret2 font-weight-bold" style="color:#494949;">著者：<%= link_to novel.user.name, user_path(novel.user), class:'text-reset' %></p></object>
+          <div class="pv-fav-foot-time mt-2 hover secret mb-1 font-weight-bold">
+            <p class=" icon-float mr-2"><i class="fas fa-shoe-prints icon"></i><%=  novel.impressionist_count %></p>
+            <% unless novel.parent_id != novel.grandparent_id && novel.fin != 0 %>
+              <p class=" icon-float mr-2"><i class="fas fa-pen-nib icon"></i><%= nextcount(novel) %></p>
+            <% end %>
+            <p class="count icon-float mr-2"><i class="fas fa-comment icon"></i><%= novel.comments.count %></p>
+            <p class="count icon-float mr-3"><i class="fas fa-heart icon"></i><%= novel.favorites.count %></p>
+            <span style="font-size: 15px;"><%= time_ago_in_words(novel.created_at) %>前</span>
+          </div>
+        </div>
+      <% else %>
+        <p class='font font-weight-bold pre-wrap' style='font-size:20px;'><%= novel.content.truncate(100) %></p>
+        <p class="secrethover mb-0 pt-2"><i class="fas fa-book-reader"></i>　カーソルを合わせて詳細を確認する</p>
+        <div class="form-color mt-3 secret">
+          <object><p class="display hover secret font-weight-bold" style="color:#494949;">著者：<%= link_to novel.user.name, user_path(novel.user), class:'text-reset' %></p></object>
+          
+          <% @grand = Novel.find_by(id: novel.grandparent_id) %>
+          <% @parent = Novel.find_by(id: novel.parent_id) %>
+          <% if @grand.present? %>
+            <% if @parent.present? %>
+              <object><p class="display title hover secret pt-2" style="color:#494949;">この作品は『<%= link_to @grand.title, novel_path(@grand), class:'text-reset' %>』のリレーストーリーです</p></object>
+            <% else %>
+              <p class="hover secret mt-2" style="margin:0; font-weight:bold; font-size:15px; color:#ef5350;"><i class="fas fa-ban icon"></i>リレー先のストーリーは削除されました。</p>
+            <% end %>
+          <% else %>
+            <p class="hover secret mt-2" style="margin:0; font-weight:bold; font-size:15px; color:#ef5350;"><i class="fas fa-ban icon"></i>リレー先のストーリーは削除されました。</p>
+          <% end %>
+          
+          <div class="pv-fav-foot-time mt-2 hover secret mb-1 font-weight-bold">
+            <p class=" icon-float mr-2"><i class="fas fa-shoe-prints icon"></i><%=  novel.impressionist_count %></p>
+            <% unless novel.parent_id != novel.grandparent_id && novel.fin != 0 %>
+              <p class=" icon-float mr-2"><i class="fas fa-pen-nib icon"></i><%= nextcount(novel) %></p>
+            <% end %>
+            <p class="count icon-float mr-2"><i class="fas fa-comment icon"></i><%= novel.comments.count %></p>
+            <p class="count icon-float mr-3"><i class="fas fa-heart icon"></i><%= novel.favorites.count %></p>
+            <span style="font-size: 15px;"><%= time_ago_in_words(novel.created_at) %>前</span>
+          </div>
+        </div>
+      <% end %>
+    </a>
+    <div style="width:100%;">
+      <%= render 'favorites/favorite_button', posted: novel %>
+    </div>
+  </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,187 @@
+<% if @grandparent_novel == nil %>
+  <div class="cautionbox">
+    <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
+    <p>このストーリーは直前のストーリーか起のストーリーが削除されたため、閲覧専用モードに移行しました。</p>
+  </div>
+  <h2 class="honbun"><span style="font-size:17px;">本文</span></h2>
+  <p class="font"><%= @novel.content %></p>
+  <% if current_user == @novel.user %>
+    <%= link_to  @novel, method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-sm delete-button mt-2 mr-0' do %>
+      削除する
+    <% end %>
+  <% end %>
+<% else %>
+  <% if @novel.id == @novel.parent_id %>
+    <h1 class="heading" style="border-bottom:5px solid #ffa8a8;">起　<span>主人公の置かれている状況やストーリーの説明</span></h1>
+  <% elsif @novel.id != @novel.parent_id && @novel.parent_id == @novel.grandparent_id %>
+    <h1 class="heading" style="border-bottom:5px solid #a8ffd3;">承　<span>主人公の状況にある出来事が起こり、これから物語が展開していく過程</span></h1>
+  <% elsif @novel.parent_id != @novel.grandparent_id && @novel.fin != 1 %>
+    <h1 class="heading" style="border-bottom:5px solid #ffffa8;">転　<span>ストーリーのヤマ場で終わりに向けた転換点</span></h1>
+  <% else %>
+    <h1 class="heading" style="border-bottom:5px solid #a8d3ff;">結　<span>出来事の終わりとストーリーの終幕</span></h1>
+  <% end %>
+  
+  <div>
+    <div class="text-center">
+      <% if @novel.id != @novel.parent_id %>
+        <% if @grandparent_novel.present? %>
+          <a href="<%= novel_path(@grandparent_novel) %>" class="btn-flat-vertical-border">ストーリーの起に戻る</a>
+        <% end %>
+        <% if @parent_novel.present? %>
+          <a href="<%= novel_path(@parent_novel) %>" class="btn-flat-vertical-border">一つ前のストーリーに戻る</a>
+        <% end %>
+      <% end %>
+      <% unless @novel.parent_id != @novel.grandparent_id && @novel.fin == 1 %>
+        <% unless @novel.parent_id == @novel.grandparent_id %>
+          <% if @novel.fin == 0 %>
+            <a href="<%= last_novel_path %>" class="btn-flat-vertical-border">
+            リレーする
+            </a>
+          <% end %>
+        <% else %>
+          <a href="<%= continue_novel_path %>" class="btn-flat-vertical-border">
+            リレーする
+          </a>
+        <% end %>
+      <% end %>
+      <%= link_to "https://twitter.com/share?url=#{request.url}&text=みんなで小説をリレーできるサービス%20～RelayNovel～%0a『#{@novel.title}』を紹介します%20%23RelayNovel",class:"btn-flat-vertical-border", title: 'Twitter', target: '_blank' do%>
+        Twitterでシェアする
+      <% end %>
+    </div>
+    
+    <div>
+      <div class="showdesign mt-3">
+        <p class="one"><%= @novel.title %></p>
+        <% if @novel.id == @novel.parent_id %> 
+          <p class="two mb-0">著者：<%= link_to @novel.user.name, user_path(@novel.user), style: 'color:gray;' %></p>
+        <% else %>
+          <p class="two mb-0">リレー著者：<%= link_to @novel.user.name, user_path(@novel.user), style: 'color:gray;' %></p>
+        <% end %>
+        <%= render 'favorites/favorite_button', posted: @novel %> 
+        <% if current_user == @novel.user %>
+          <%= link_to  @novel, method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-sm delete-button mt-2 mr-0' do %>
+            削除する
+          <% end %>
+        <% end %>
+        
+        <% if @novel.id == @novel.parent_id %>
+          <h2 class="honbun mt-2"><span style="font-size:17px;">あらすじ</span></h2>
+          <p class="three pre-wrap font" style="text-align:left;"><%= @novel.outline %></p>
+        <% end %>
+        <h2 class="honbun"><span style="font-size:17px;">本文</span></h2>
+          <p class="four pre-wrap font" style="text-align:left;"><%= @novel.content %></p>
+        <h2 class="honbun"><span style="font-size:17px;">おすすめレビュー</span></h2>
+          <div class="container">
+            <div class="row">
+              <% unless @novel.comments.present? %>
+                <p style="font-weight:bold;">レビューはまだ投稿されておりません</p>
+              <% else %>
+                <% @novel.comments.each do |c| %>
+                  <div class="col-md-4 mt-3 pl-0">
+                    <div class="mt-0 aboutback" style="text-align:left; height:100%">
+                      <a href="<%= user_path(c.user) %>" class="reviewname"><%= c.user.name %></a>
+                      <p class="pre-wrap"><%= c.content %></p>
+                      <p style="font-size:13px;"><%= c.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
+                      <% if current_user == c.user %>
+                        <%= link_to novel_comment_path(c.novel.id, c.id), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-sm delete-button mt-2 mr-0' do %>
+                          削除する
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+                
+          <% if current_user.present? %>
+            <%= form_with(model: [@novel, @comment], local: true) do |f| %>
+              <%= f.text_area :content, id:"comment", class: "form-control mt-3", rows: 5, placeholder: '300文字まで入力できます' %>
+              <p id="counter" class="jcount jscount mt-1 text-right font-weight-bold">現在 0 文字</p>
+              <%= button_tag type: "submit", class: "btn btn-success mr-0 mt-1", style:"font-weight:bold;" do %>
+                <i class="far fa-comments"></i> レビューを投稿する
+              <% end %>
+            <% end %>
+          <% end %>
+      </div>
+    
+    <% if @next_novels.present? %>
+      <% unless @novel.id != @novel.parent_id && @novel.fin == 1 %>
+        <% if @novel.id == @novel.parent_id %>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffa8a8;">いま　<span>投稿されている続きのストーリーを読む</span></h1>
+        <% elsif @novel.id != @novel.parent_id && @novel.parent_id == @novel.grandparent_id %>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #a8ffd3;">いま　<span>投稿されている続きのストーリーを読む</span></h1>
+        <% else %>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffffa8;">いま　<span>投稿されている続きのストーリーを読む</span></h1>
+        <% end %>
+        <div class="container">
+          <div class="row">
+            <% @next_novels.each do |next_novel| %>
+              <div class="col-md-4 mt-3 mb-3">
+                <div class="card">
+                  <div class="card-header">
+                    <p style="font-size:12px">ストーリー Info</p>
+                    <p class="nextcolor">リレー著者：<%= link_to next_novel.user.name, user_path(next_novel.user), style: 'color:gray;' %></p>
+                    <% if next_novel.fin == 1 %>
+                      <div class"#">
+                        <i class="fas fa-info-circle"></i><p class="nextinfo">このストーリーで完結です。</p>
+                      </div>
+                    <% else %>
+                      <div class="mb-3">
+                        <i class="fas fa-info-circle"></i><p class="nextinfo"><%= next_next(next_novel) %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                  <a href="<%= novel_path(next_novel) %>" class="card-body nextlink">
+                    <p class="four pre-wrap font"><%= next_novel.content.truncate(100) %></p>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+        　</div>
+        </div>
+      <% end %>
+    <% else %>
+      <% unless @novel.id != @novel.parent_id && @novel.fin == 1 %>
+        <% if @novel.id == @novel.parent_id %>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffa8a8;">いま　<span>投稿されている続きのストーリーはありません</span></h1>
+        <% elsif @novel.id != @novel.parent_id && @novel.parent_id == @novel.grandparent_id %>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #a8ffd3;">いま　<span>投稿されている続きのストーリーはありません</span></h1>
+        <% else %>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffffa8;">いま　<span>投稿されている続きのストーリーはありません</span></h1>
+        <% end %>
+      <% end %>
+    <% end %>
+    
+    <!--<div class="balloon5">-->
+    <!--  <div class="faceicon">-->
+    <!--    <img src=".././assets/pen.jpg">-->
+    <!--  </div>-->
+    <!--  <div class="chatting">-->
+    <!--    <div class="says">-->
+    <!--      <% unless @novel.parent_id != @novel.grandparent_id && @novel.fin == 1 %>-->
+    <!--        <% unless @novel.parent_id == @novel.grandparent_id %>-->
+    <!--          <% if @novel.fin == 0 %>-->
+    <!--            <p>-->
+    <!--              リレーする前は上手く書けなかったらどうしようって思ってたけど<br>RelayNovelは一つのストーリーをみんなでリレーできるから安心なんだ<br>-->
+    <!--              たとえ自分がつまずいても、他の誰かがバトンを引き継いでくれるもん-->
+    <!--            </p>-->
+    <!--            <a href="<%= last_novel_path %>" class="">-->
+    <!--              このストーリーをリレーする-->
+    <!--            </a>-->
+    <!--          <% end %>-->
+    <!--        <% else %>-->
+    <!--          <p>-->
+    <!--            リレーする前は上手く書けなかったらどうしようって思ってたけど<br>RelayNovelは一つのストーリーをみんなでリレーできるから安心なんだ<br>-->
+    <!--            たとえ自分がつまずいても、他の誰かがバトンを引き継いでくれるもん-->
+    <!--          </p>-->
+    <!--          <a href="<%= last_novel_path %>" class="">-->
+    <!--            このストーリーをリレーする-->
+    <!--          </a>-->
+    <!--        <% end %>-->
+    <!--      <% end %>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
+  </div>
+<% end %>

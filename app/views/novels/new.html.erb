@@ -1,0 +1,32 @@
+<h1 class="heading" style="border-bottom:5px solid #ffa8a8;">起　<span>主人公の置かれている状況やストーリーの説明</span></h1>
+<%= form_with(model: @novel, local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  
+  <div class="form-group">
+    <%= f.label :title, 'タイトル', class:'form-color' %><span class="ml-1 attention">*</span>
+    <%= f.text_field :title, class:'form-control', id: "input-textfour",placeholder: '50文字まで入力できます' %>
+    <p id="counterfour" class="mt-1 jcount jscount text-right font-weight-bold">現在 0 文字</p>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :outline, 'あらすじ', class:'form-color' %><span class="ml-1 attention">*</span>
+    <%= f.text_area :outline, rows: "5", class:'form-control', id: "input-texttwo", placeholder:'1,000文字まで入力できます' %>
+    <p id="countertwo" class="mt-1 jcount jscount text-right font-weight-bold">現在 0 文字</p>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :content, 'ストーリー本文', class:'form-color' %><span class="ml-1 attention">*</span>
+    <%= f.text_area :content, rows: "10", class:'form-control', id: "input-text", placeholder: '50～50,000文字の間で入力してください' %>
+    <p id="counter" class="jcount jscount mt-1 text-right font-weight-bold">現在 0 文字</p>
+  </div>
+  
+  <div class="cautionbox">
+  <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
+    <p class="font-weight-bold" style="color:gray;">・フォーム欄の高さは右下のつまみで調節できます。</p>
+    <p class="font-weight-bold" style="color:gray;">・入力に不備があると投稿を受け付けることができず、入力された内容がリセットされてしまいます。すべてのフォームに入力してください。</p>
+    <p class="font-weight-bold" style="color:gray;">・作成された内容を後から編集することはできません。十分にご注意ください。</p>
+  </div>
+  <%= f.submit '作成する', class: 'btn yes-button btn-block' %>
+<% end %>
+  
+  

@@ -1,0 +1,13 @@
+<% if current_user.present? %>
+  <% if current_user.already_fav?(posted) %>
+    <%= form_with(model: current_user.favorites.find_by(novel_id: posted.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :novel_id, posted.id %>
+      <%= f.submit 'お気に入り解除', class: 'btn btn-sm delete-button mr-0' %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+      <%= hidden_field_tag :novel_id, posted.id %>
+      <%= f.submit 'お気に入り登録', class: 'btn yes-button btn-sm mr-0' %>
+    <% end %>
+  <% end %>
+<% end %>

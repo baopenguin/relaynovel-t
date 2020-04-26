@@ -1,0 +1,56 @@
+<div class="toppage-box">
+  <img src=".././assets/1.jpg" style="width:100%;">
+  <div class="top-exp" style="height:100%">
+    <h1 class="text-center mt-3">RelayNovel</h1>
+    <p class="text-center" style="font-weight:bold;">みんなが書いたストーリーをみんなでリレーする</p>
+    <% unless current_user.present? %>
+      <a href="novels/new" class="btn mt-0 mb-3">
+        <p>アカウント登録 / ログインして</p>
+        <p class="button-font">ストーリーを書く</p>
+      </a>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="side col-md-3">
+      <h2>RelayNovelについて</h2>
+      <a href="<%= novels_about_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_about_path) %>"><i class="fas fa-desktop icon"></i>サイト紹介</a>
+      <a href="<%= novels_qanda_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_qanda_path) %>"><i class="far fa-comments icon"></i>Q & A</a>
+      <h2>ストーリーを探す</h2>
+      <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
+      <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
+      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
+      <% if current_user.present? %>
+        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
+      <% end %>
+    </div>
+  
+    <div class="col-md-9">
+      <h2 class="toppage-title mb-0"><i class="fas fa-egg icon mr-2 pt-2" style="color: #5fde7c; font-size:30px;"></i>未完ストーリー</h2>
+      <% @novels.each do |novel| %>
+        <% if novel.parent_id == novel.grandparent_id && novel.fin == 0 && novel.id == novel.parent_id %>
+          <a href="<%= novel_path(novel) %>" class="linkbox">
+            <div class="novel-border media-body show">
+              <p class='font-weight-bold pre-wrap font mr-3' style='font-size:20px;'><%= novel.outline.truncate(100) %></p>
+              <div class="form-color">
+                <p class="display title">『<%= novel.title %>』</p>
+                <object><p class="display">著者：<%= link_to novel.user.name, user_path(novel.user), class:'text-reset' %></p></object>
+                <div class="pv-fav-foot-time mt-2">
+                  <p class=" icon-float mr-2"><i class="fas fa-shoe-prints icon"></i><%=  novel.impressionist_count %></p>
+                  <% unless novel.parent_id != novel.grandparent_id && novel.fin != 0 %>
+                    <p class=" icon-float mr-2"><i class="fas fa-pen-nib icon"></i><%= nextcount(novel) %></p>
+                  <% end %>
+                  <p class="count icon-float mr-2"><i class="fas fa-comment icon"></i><%= novel.comments.count %></p>
+                  <p class="count icon-float mr-3"><i class="fas fa-heart icon"></i><%= novel.favorites.count %></p>
+                  <span style="font-size: 15px;"><%= time_ago_in_words(novel.created_at) %>前</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

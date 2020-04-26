@@ -1,0 +1,44 @@
+<% if @novel.id == @novel.parent_id %>
+  <h1 class="heading" style="border-bottom:5px solid #a8ffd3;">承　<span>主人公の状況にある出来事が起こり、これから物語が展開していく過程</span></h1>
+<% else %>
+  <h1 class="heading" style="border-bottom:5px solid #ffffa8;">転　<span>ストーリーのヤマ場で終わりに向けた転換点</span></h1>
+<% end %>
+
+<div class="showdesign mt-3">
+  <p class="one"><%= @novel.title %></p>
+  <% if @novel.id == @novel.parent_id %> 
+    <p class="two">著者：<%= link_to @novel.user.name, user_path(@novel.user), style: 'color:gray;' %></p>
+  <% else %>
+    <p class="two">リレー著者：<%= link_to @novel.user.name, user_path(@novel.user), style: 'color:gray;' %></p>
+  <% end %>
+  <% if @novel.id == @novel.parent_id %>
+    <h2 class="honbun mt-2"><span style="font-size:17px;">あらすじ</span></h2>
+    <p class="three pre-wrap font" style="text-align:left;"><%= @novel.outline %></p>
+  <% end %>
+  <h2 class="honbun"><span style="font-size:17px;">本文</span></h2>
+    <p class="four pre-wrap" style="text-align:left;"><%= @novel.content %></p>
+  <h2 class="honbun"><span style="font-size:17px;">以下のフォームでは、このストーリーをリレーしてください</span></h2>
+</div>
+
+<%= form_with(model: Novel.new(title: @novel.title, outline: @novel.outline), local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  
+  <div class="form-group mt-3">
+    <%= f.label :content, 'ストーリー本文', class:'form-color' %><span class="ml-1 attention">*</span>
+    <%= f.text_area :content, rows: "10", class:'form-control', id: "input-text", placeholder: '50～50,000文字の間で入力してください' %>
+    <p id="counter" class="jcount jscount mt-1 text-right font-weight-bold">現在 0 文字</p>
+  </div>
+  <%= f.hidden_field :title, :value => @novel.title %>
+  <%= f.hidden_field :outline, :value => @novel.outline %>
+  <%= f.hidden_field :parent_id, :value => @novel.id %>
+  <%= f.hidden_field :grandparent_id, :value => @novel.grandparent_id %>
+  
+  <div class="cautionbox">
+  <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
+    <p class="font-weight-bold" style="color:gray;">・フォーム欄の高さは右下のつまみで調節できます。</p>
+    <p class="font-weight-bold" style="color:gray;">・入力に不備があると投稿を受け付けることができず、入力された内容がリセットされてしまいます。</p>
+    <p class="font-weight-bold" style="color:gray;">・作成された内容を後から編集することはできません。十分にご注意ください。</p>
+  </div>
+  
+  <%= f.submit '作成する', class: 'btn yes-button btn-block' %>
+<% end %>

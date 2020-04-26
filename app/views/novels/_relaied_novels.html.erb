@@ -1,0 +1,40 @@
+<% unless novels.present? %>
+  <p class="nothing">ストーリーはありません。</p>
+<% else %>
+  <% novels.each do |novel| %>
+    <% if novel.id != novel.parent_id %>
+      <div class="novel-border media-body show mt-4 pr-4">
+        <a href="<%= novel_path(novel) %>" class="linkbox">
+          <p class='font font-weight-bold pre-wrap' style='font-size:20px;'><%= novel.content.truncate(100) %></p>
+          <p class="secrethover pt-2 mb-0"><i class="fas fa-book-reader"></i>　カーソルを合わせて詳細を確認する</p>
+          <div class="form-color mt-3 secret">
+            <% @grand = Novel.find_by(id: novel.grandparent_id) %>
+            <% @parent = Novel.find_by(id: novel.parent_id) %>
+            <% if @grand.present? %>
+              <% if @parent.present? %>
+                <object><p class="display title hover secret" style="color:#494949;">この作品は『<%= link_to @grand.title, novel_path(@grand), class:'text-reset' %>』のリレーストーリーです</p></object>
+              <% else %>
+                <p class="hover secret" style="margin:0; font-weight:bold; font-size:15px; color:#ef5350;"><i class="fas fa-ban icon"></i>リレー先のストーリーは削除されました。</p>
+              <% end %>
+            <% else %>
+              <p class="hover secret" style="margin:0; font-weight:bold; font-size:15px; color:#ef5350;"><i class="fas fa-ban icon"></i>リレー先のストーリーは削除されました。</p>
+            <% end %>
+            <div class="pv-fav-foot-time mt-2 hover secret font-weight-bold">
+              <p class=" icon-float mr-2"><i class="fas fa-shoe-prints icon"></i><%=  novel.impressionist_count %></p>
+              <% unless novel.parent_id != novel.grandparent_id && novel.fin != 0 %>
+                <p class=" icon-float mr-2"><i class="fas fa-pen-nib icon"></i><%= nextcount(novel) %></p>
+              <% end %>
+              <p class="count icon-float mr-2"><i class="fas fa-comment icon"></i><%= novel.comments.count %></p>
+              <p class="count icon-float mr-3"><i class="fas fa-heart icon"></i><%= novel.favorites.count %></p>
+              <span style="font-size: 15px;"><%= time_ago_in_words(novel.created_at) %>前</span>
+            </div>
+          </div>
+        </a>
+        <div class="mr-4 mb-1" style="width:100%;"><%= render 'favorites/favorite_button', posted: novel %></div>
+        <% if current_user == novel.user %>
+          <%= link_to "削除する", novel, method: :delete, data: {confirm: "本当に削除しますか？" }, class: 'btn btn-sm col-md-4 delete-button mr-0' %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,142 @@
+<div class="text-center" style="width:100%;">
+  <h3 class="ribbon1">サイト紹介</h3>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 balloon5">
+      <div class="faceicon">
+        <img src=".././assets/tori.jpg" class="ml-5">
+      </div>
+      <div class="chatting">
+        <div class="says mr-5" style="margin-left:150px;">
+          <p style="font-weight:bold; font-size:16px;">RelayNovelは、「みんなが書いたストーリーをみんなでリレーする」をコンセプトに開発されたそうだよ！<br>詳しくは以下を確認してね</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="container">
+  <div class="row">
+    <div class="side col-lg-3">
+      <h2>RelayNovelについて</h2>
+      <a href="<%= novels_about_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_about_path) %>"><i class="fas fa-desktop icon"></i>サイト紹介</a>
+      <a href="<%= novels_qanda_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_qanda_path) %>"><i class="far fa-comments icon"></i>Q & A</a>
+      <h2>ストーリーを探す</h2>
+      <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
+      <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
+      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
+      <% if current_user.present? %>
+        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
+      <% end %>
+    </div>
+
+    
+    <div class="side col-lg-9">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2>オリジナルストーリーを書く</h2>
+            <p>
+            　投稿フォームはシンプルでわかりやすく、１ステップで執筆・公開までできます。
+            ストーリーの結末が思いつかなくても構いません。続きのストーリーはあなたのバトンを受け取った誰かが書いてくれるので、思いついたままにストーリーを書いてみましょう。
+            </p>
+            <a href="#about-one"><i class="fas fa-chevron-down icon"></i>詳しく</a>
+          </div>
+          <div class="col-lg-6">
+            <h2>誰かが書いたストーリーの続きを書く</h2>
+            <p>
+            　ストーリーは起承転結の4段階で構成されています。
+            RelayNovelでは、誰かが書いた「起」（承転結）の続き、つまり「承」（転結）を書くことができます。
+            バトンを受け取ることのできる人数に制限はないので、
+            ストーリーの続編を思いつく人が複数いれば、その分そのストーリーは分岐していきます。
+            </p>
+            <a href="#about-two"><i class="fas fa-chevron-down icon"></i>詳しく</a>
+          </div>
+          <div class="col-lg-6">
+            <h2>ストーリーを読む</h2>
+            <p>
+            　ユーザーは、ストーリーの執筆に参加していなくても、
+            読者としてたくさんのストーリーを楽しむことができます。
+            起承転結ごとにストーリーが分岐していく様には、ただ読むだけではない楽しさがあるはずです。
+            </p>
+            <a href="#about-three"><i class="fas fa-chevron-down icon"></i>詳しく</a>
+          </div>
+          <div class="col-lg-6">
+            <h2>著者を応援する</h2>
+            <p>
+            　RelayNovelには、ストーリーのレビュー機能やSNS共有機能があります。
+            ストーリーの良さを語って宣伝しましょう。
+            </p>
+            <a href="#about-four"><i class="fas fa-chevron-down icon"></i>詳しく</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="details">
+        <div class="aboutback">
+          <h3 id="about-one"><span style="background-color:#ffa8a8;">創</span>る</h3>
+          <p style="margin-top:30px;">
+            一人で一つのストーリーを最初から最後まで書き切るのはとても大変です。
+            そこでRelayNovelでは、「ストーリーを創りたい」と思ったユーザーは起承転結でいう「起」の部分だけを書けばいいように設計しています。
+            もちろん、自分で続きのストーリーを書くこともできます。
+          </p>
+          <h4 class="aboutoutline" style="border-left: 5px solid #ffa8a8;">アカウント登録で、すぐに書ける</h4>
+          <div>
+            <p>
+              アカウント登録(無料)をしたら、ユーザーは「新規ストーリー作成」から執筆できます。
+              タイトル、あらすじ、ストーリー本文を書いたらすぐに公開しましょう。
+            </p>
+            <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= signup_path %>">アカウント登録</a></p>
+            <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= new_novel_path %>">新規ストーリー作成</a></p>
+          </div>
+        </div>
+        
+        <div class="aboutback">
+          <h3 id="about-two"><span style="background-color:#a8ffd3;">繋</span>ぐ</h3>
+          <p style="margin-top:30px;">
+            RelayNovelは、リレーのように誰かが書いたストーリーの続きを書くことができます。
+            実際のリレーと違うのは、ストーリーのバトンは筆を執ったユーザーの数だけ存在するということです。
+            そのため、ストーリーの結末もまた無数に存在します。
+          </p>
+          <h4 class="aboutoutline" style="border-left: 5px solid #a8ffd3;">気になるストーリーを探してバトンを受け取る</h4>
+          <div>
+            <p>
+              「完結済みストーリーを探す」、「未完ストーリーを探す」、「いいねランキングを見る」などから
+              気になるストーリーを探してバトンを受け取ってみましょう。
+              すでに誰かが続きを書いていたり、完結していたりするかもしれませんが、
+              構わず「自分ならこうする」というストーリーを書いてみましょう。
+              
+            </p>
+            <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= root_path %>">完結済みストーリーを探す</a></p>
+            <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= novels_unfinished_path %>">未完ストーリーを探す</a></p>
+            <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= novels_ranking_path %>">いいねランキングを見る</a></p>
+          </div>
+        </div>
+        
+        <div class="aboutback">
+          <h3 id="about-three"><span style="background-color:#ffffa8;">読</span>む</h3>
+          <p style="margin-top:30px;">
+            RelayNovelは、いわゆる「読み専」のユーザーも大歓迎しています。
+            「完結済みストーリー」「未完ストーリー」「いいねランキング」からストーリーを探して読むことができます。
+            面白い作品があればお気に入り登録をして著者を応援しましょう。
+          </p>
+          <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= root_path %>">完結済みストーリーを探す</a></p>
+          <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= novels_unfinished_path %>">未完ストーリーを探す</a></p>
+          <p><i class="fas fa-arrow-circle-right icon"></i><a href="<%= novels_ranking_path %>">いいねランキングを見る</a></p>
+        </div>
+        
+        <div class="aboutback">
+          <h3 id="about-four"><span style="background-color:#a8d3ff;">語</span>る</h3>
+          <p style="margin-top:30px;">
+            RelayNovelでは、書けるのはストーリーだけではありません。
+            お気に入りのストーリーを見つけたら、ストーリーページからレビューを書いてみましょう。
+            また、ユーザーは自分のストーリーやお気に入りのストーリーをSNSに共有することができます。
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

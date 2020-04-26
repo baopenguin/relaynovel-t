@@ -1,0 +1,263 @@
+<div class="text-center" style="width:100%;">
+  <h3 class="ribbon1">Q & A</h3>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 balloon5 text-center">
+      <div class="faceicon">
+        <img src=".././assets/tori.jpg" class="ml-2">
+      </div>
+      <div class="chatting">
+        <div class="says mr-5">
+          <p style="font-weight:bold; font-size:16px;">このページではペンギンさんがRelayNovelについて疑問に思ったことと、それについての開発者の回答をまとめているよ！<br>気になる質問があったら、クリックして確認してね</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="side col-md-3">
+      <h2>RelayNovelについて</h2>
+      <a href="<%= novels_about_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_about_path) %>"><i class="fas fa-desktop icon"></i>サイト紹介</a>
+      <a href="<%= novels_qanda_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_qanda_path) %>"><i class="far fa-comments icon"></i>Q & A</a>
+      <h2>ストーリーを探す</h2>
+      <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
+      <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
+      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
+      <% if current_user.present? %>
+        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
+      <% end %>
+    </div>
+    
+    <div class="col-md-9" style="margin-top:30px;">
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open3').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">「リレーする」って何？</p>
+              </div>
+              <div id="open3" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  RelayNovelでは、誰かが書いたストーリーの続きを執筆することを「リレーする」と呼びます。<br>
+                  ストーリーは起承転結の４段階で構成されており、起のストーリーが縦に３回リレーされた時点でそのストーリーは完結となります。<br>
+                  リレーは、リレーしたいストーリーの詳細ページ上部のリンクから行うことができます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('opena').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">「完結済みストーリー」と「未完ストーリー」の違いは？</p>
+              </div>
+              <div id="opena" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  完結済みストーリーとは、起から始まるストーリーの続編が一つでも結まで到達したものを意味します。<br>
+                  逆に、未完ストーリーとは、まだ結に到達していないストーリーを意味します。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open4').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">ストーリーを投稿できないんだけど……</p>
+              </div>
+              <div id="open4" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  新規ストーリー作成の場合：ログインした状態で各項目につき以下の条件をお守りいただいた上で再度お試しください。<br>
+                  タイトル(入力必須)：最大50文字<br>
+                  あらすじ(入力必須)：最大1000文字<br>
+                  本文(入力必須)：最低50文字～最大50000文字
+                  リレーストーリーの場合：ログインした状態で以下の条件をお守りいただいた上で再度お試しください。また、結の場合はチェックボックスにチェックをお付けください。<br>
+                  本文(入力必須)：最低50文字～最大50000文字
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">ストーリーの編集がしたいんだけど、どうすればいい？</p>
+              </div>
+              <div id="open" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  申し訳ありません。ストーリーの編集機能は実装しておりません。<br>
+                  起のストーリーの内容が編集されて大幅に変わってしまうと、承以降のストーリーとの整合性がつかなくなってしまうためでございます。<br>
+                  ストーリーを公開する際には、もう一度内容をご確認いただけますようお願い致します。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open8').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">ストーリーに挿絵を投稿することはできる？</p>
+              </div>
+              <div id="open8" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  現在は挿絵を投稿していただくことはできません。今後実装予定です。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open2').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">ストーリーの「閲覧専用モード」って？</p>
+              </div>
+              <div id="open2" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  自分がリレーしたストーリーの親のストーリーなど、バトンを渡してくれたストーリーが著者によって削除されてしまうことがあります。<br>
+                  そのようにして、一連のストーリーとして成立しなくなった場合、そのリレーストーリーは閲覧専用モードに移行し、独立したページとして表示されます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open9').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">いいねランキングはどういう順番に並んでいるの？</p>
+              </div>
+              <div id="open9" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  いいねが多い順に並んでいます。<br>
+                  いいねが同数の場合は、公開がより最近のものを上位に表示しています。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open5').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">プロフィールアイコンは設定できないの？</p>
+              </div>
+              <div id="open5" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  現在は設定していただくことはできません。今後実装予定です。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open6').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">登録したメールアドレスやパスワードを変更するにはどうしたらいい？</p>
+              </div>
+              <div id="open6" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  マイページの「プロフィールを編集」から変更していただけます。<br>
+                  なお、こちらのフォームからは自己紹介文やツイッターアカウントを設定できます。<br>
+                  メールアドレスやパスワードを変更したくない場合、メールアドレスはそのままに、パスワードは空白のまま「この内容で編集する」ボタンを押してください。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="balloon5">
+        <div class="faceicon">
+          <img src=".././assets/pen.jpg" class="ml-4">
+        </div>
+        <div class="question">
+          <div onclick="obj=document.getElementById('open7').style; obj.display=(obj.display=='none')?'block':'none';">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px; cursor:pointer;">退会するにはどうしたらいい？</p>
+              </div>
+              <div id="open7" class="box8 mb-0" style="display:none;clear:both;">
+                <p>
+                  退会をご希望の場合は注意事項をご確認の上、以下の手順に従ってください。
+                </p>
+                <div class="cautionbox">
+                <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
+                  <p>
+                    ・退会すると、これまで投稿されたストーリーをはじめ、RelayNovelに関する全ての情報が削除されてしまいます。大事な情報は事前にご自身で保存をお願い致します。<br>
+                    ・退会の操作は元に戻せず、削除された情報は復元できません。
+                  </p>
+                </div>
+                <p>
+                  退会の手順としては、「マイページ」→「プロフィールを編集」→「退会する」の順でクリックしていただくと、確認メッセージが表示されますので、そこで了承していただくと退会処理が受理されます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
