@@ -60,6 +60,8 @@ gem 'devise-i18n-views'
 gem "jquery-rails"
 gem 'jquery-turbolinks'
 
+gem 'redis-rails'
+
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
