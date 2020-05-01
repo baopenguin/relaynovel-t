@@ -24,7 +24,7 @@ class NovelsController < ApplicationController
   end
   
   def ranking
-    @ranking = Novel.find(Favorite.group(:novel_id).order('count(novel_id) desc').pluck(:novel_id).order(created_at:'DESC'))
+    @ranking = Novel.find(Favorite.group(:novel_id).order('count(novel_id) desc').pluck(:novel_id))
     @order = 0
   end
   
