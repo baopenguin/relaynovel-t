@@ -23,6 +23,7 @@ Rails.application.routes.draw do
  get 'novels/qanda', to: 'novels#qanda'
  get 'novels/ranking_relay', to: 'novels#ranking_relay'
  get 'novels/following_relay', to: 'novels#following_relay'
+ get 'novels/show', to: 'novels#show'
  resources :novels do
   member do
     get :continue
