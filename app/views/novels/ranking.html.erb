@@ -29,14 +29,14 @@
   
     <div class="col-md-9">
       <h2 class="toppage-title mb-0"><i class="fas fa-crown icon mr-2 pt-2" style="color: #DBB400; font-size:30px;"></i>いいねランキング</h2>
-      <!--<div class="mb-3">-->
-      <!--  <a href="<%= novels_ranking_path %>" class="btn-flat-logo <%= 'active-ranking' if current_page?(novels_ranking_path) %>">-->
-      <!--    <i class="fa fa-chevron-right"></i> オリジナルストーリー-->
-      <!--  </a>-->
-      <!--  <a href="<%= novels_ranking_relay_path %>" class="btn-flat-logo <%= 'active-ranking' if current_page?(novels_ranking_relay_path) %>">-->
-      <!--    <i class="fa fa-chevron-right"></i> リレーストーリー-->
-      <!--  </a>-->
-      <!--</div>-->
+      <div class="mb-3">
+        <a href="<%= novels_ranking_path %>" class="btn-flat-logo <%= 'active-ranking' if current_page?(novels_ranking_path) %>">
+          <i class="fa fa-chevron-right"></i> オリジナルストーリー
+        </a>
+        <a href="<%= novels_ranking_relay_path %>" class="btn-flat-logo <%= 'active-ranking' if current_page?(novels_ranking_relay_path) %>">
+          <i class="fa fa-chevron-right"></i> リレーストーリー
+        </a>
+      </div>
       <% @ranking.each do |novel| %>
         <% if novel.id == novel.parent_id %>
           <a href="<%= novel_path(novel) %>" class="linkbox">
