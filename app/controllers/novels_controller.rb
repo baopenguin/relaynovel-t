@@ -29,7 +29,7 @@ class NovelsController < ApplicationController
   end
   
   def ranking_relay
-    @ranking = Novel.find(Favorite.group(:novel_id).order('count(novel_id) desc').order(created_at:'DESC').pluck(:novel_id))
+    @ranking = Novel.find(Favorite.group(:novel_id).order('count(novel_id) desc').pluck(:novel_id))
     @order = 0
   end
   
