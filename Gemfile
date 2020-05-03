@@ -52,7 +52,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari'
-gem 'impressionist'
+gem 'impressionist', '~>1.6.1'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
