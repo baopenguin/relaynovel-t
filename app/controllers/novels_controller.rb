@@ -128,6 +128,12 @@ class NovelsController < ApplicationController
   def qanda
   end
   
+  def guideline
+  end
+  
+  def rule
+  end
+  
   
   helper_method :next_next
   helper_method :nextcount

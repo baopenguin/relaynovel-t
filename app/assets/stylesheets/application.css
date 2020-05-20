@@ -978,6 +978,18 @@ border-bottom: 2px solid #444;
 }
 
 
+/*利用規約　ガイドライン*/
+
+.rule{
+  border-bottom:1px solid gray;
+  font-weight:bold;
+  font-size:27px;
+}
+
+.list{
+  list-style-type: decimal;
+}
+
 @media screen and (max-width:420px) {
 
   .navbar{

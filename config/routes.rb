@@ -21,6 +21,8 @@ Rails.application.routes.draw do
  get 'novels/following_novels', to: 'novels#following_novels'
  get 'novels/about', to: 'novels#about'
  get 'novels/qanda', to: 'novels#qanda'
+ get 'novels/guideline', to: 'novels#guideline'
+ get 'novels/rule', to: 'novels#rule'
  get 'novels/ranking_relay', to: 'novels#ranking_relay'
  get 'novels/following_relay', to: 'novels#following_relay'
  resources :novels do
