@@ -28,7 +28,11 @@
         <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードをもう一度入力してください' %>
       </div>
       
-      <p class="mt-3"></p>
+      <div class="text-center mb-3">
+        <p class="mb-1"><%= link_to "利用規約", novels_rule_path %>と<%= link_to "ガイドライン", novels_guideline_path %>を必ずご確認ください。</p>
+        <%= f.check_box :checkbox_user, :as => :boolean, checked:false %>
+        <%= f.label :利用規約に同意する %>
+      </div>
       
       <%= f.submit 'アカウント登録', class: 'btn login-account-btn', style:'font-weight:bold;' %>
     <% end %>

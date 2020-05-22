@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8, maximum: 16 },
                        format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,16}+\z/ }, if: :update_password?
   validates :self_introduction, length: { maximum: 500 }
+  validates :checkbox_user, presence: true
 
   has_many :favorites, dependent: :destroy
   has_many :already_fav, through: :favorites, source: :novel, dependent: :destroy
