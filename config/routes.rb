@@ -23,6 +23,7 @@ Rails.application.routes.draw do
  get 'novels/qanda', to: 'novels#qanda'
  get 'novels/guideline', to: 'novels#guideline'
  get 'novels/rule', to: 'novels#rule'
+ get 'novels/privacy', to: 'novels#privacy'
  get 'novels/ranking_relay', to: 'novels#ranking_relay'
  get 'novels/following_relay', to: 'novels#following_relay'
  resources :novels do

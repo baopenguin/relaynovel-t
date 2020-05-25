@@ -134,6 +134,9 @@ class NovelsController < ApplicationController
   def rule
   end
   
+  def privacy
+  end
+  
   
   helper_method :next_next
   helper_method :nextcount
