@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   before_save { self.email.downcase! }
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true, length: { maximum: 255 },
