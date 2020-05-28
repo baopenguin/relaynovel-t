@@ -232,6 +232,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)
+  devise
   devise-i18n
   devise-i18n-views
   impressionist (~> 1.6.1)

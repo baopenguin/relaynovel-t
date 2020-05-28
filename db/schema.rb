@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_211121) do
+ActiveRecord::Schema.define(version: 2020_04_26_005036) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -89,7 +89,14 @@ ActiveRecord::Schema.define(version: 2020_05_22_211121) do
     t.string "twitter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "checkbox_user", default: false, null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
   end
 
   add_foreign_key "comments", "novels"
