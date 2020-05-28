@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_005036) do
+ActiveRecord::Schema.define(version: 2020_05_22_211121) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_04_26_005036) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.boolean "checkbox_user", default: false, null: false
   end
 
   add_foreign_key "comments", "novels"
