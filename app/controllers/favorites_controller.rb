@@ -2,6 +2,9 @@ class FavoritesController < ApplicationController
   def create
     novel = Novel.find(params[:novel_id])
     current_user.favorite(novel)
+    
+    novel.create_notification_like!(current_user)
+  
     flash[:success] = 'ストーリーをお気に入りに追加しました。'
     redirect_back(fallback_location: root_path)
   end
@@ -12,4 +15,5 @@ class FavoritesController < ApplicationController
     flash[:success] = 'ストーリーをお気に入りから削除しました。'
     redirect_back(fallback_location: root_path)
   end
+
 end

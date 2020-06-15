@@ -22,7 +22,10 @@ class User < ApplicationRecord
   has_many :followers, through: :reverses_of_relationship, source: :user, dependent: :destroy
   
   has_many :comments, dependent: :destroy
-  
+
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -57,6 +60,17 @@ class User < ApplicationRecord
   
   def update_password?
     password.to_s != ''
+  end
+  
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
   
 end

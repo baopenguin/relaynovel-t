@@ -11,6 +11,14 @@
         <% end %>
         <% if current_user == @user %>
           <a href="<%= edit_user_path %>" class="btn-animation-02"><span class="btn-span">プロフィールを編集</span></a>
+          
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
+          <li>
+            <%= link_to "NOTICE", notifications_path, class: "btn-default" %>
+          </li>
+          
         <% end %>
       </div>
       <%= render 'relationships/follow_button', user: @user %>
