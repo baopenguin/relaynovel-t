@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  # config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
@@ -91,4 +91,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.public_file_server.enabled = true
+  
+  config.consider_all_requests_local  = true
 end
