@@ -88,6 +88,9 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def form
+  end
+  
   helper_method :nextcount
 
   private

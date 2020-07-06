@@ -1,0 +1,49 @@
+
+<div class="text-center" style="width:100%;">
+  <h3 class="ribbon1">お問い合わせ</h3>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 balloon5 text-center">
+      <div class="faceicon">
+        <img src="<%= asset_path "tori.jpg" %>" style="margin-left:200px;">
+      </div>
+      <div class="chatting">
+        <div class="says mr-5">
+          <p style="font-weight:bold; font-size:16px;">ご質問などがあれば、このフォームからお気軽にお願いします！<br>ご記入いただいた内容はGoogleフォームにて管理しています</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="container">
+  <div class="row">
+    <div class="side col-lg-3">
+      <h2>RelayNovelについて</h2>
+      <a href="<%= novels_about_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_about_path) %>"><i class="fas fa-desktop icon"></i>サイト紹介</a>
+      <a href="<%= novels_qanda_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_qanda_path) %>"><i class="far fa-comments icon"></i>Q & A</a>
+      <a href="<%= form_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(form_path) %>"><i class="far fa-envelope icon"></i>お問い合わせ</a>
+      <h2>ストーリーを探す</h2>
+      <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
+      <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
+      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
+      <% if current_user.present? %>
+        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
+      <% end %>
+    </div>
+
+    
+    <div class="side col-lg-9">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSckHbbDZpZXgxuJR8I3Gi1hQNCA74peWDpW9gsbAR4x7bJB0A/viewform?embedded=true" width="640" height="1303" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

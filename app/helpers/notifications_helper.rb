@@ -11,6 +11,9 @@ module NotificationsHelper
       when "comment" then
         @comment=Comment.find_by(id:notification.comment_id)&.content
         "#{visiter}が#{your_novel}にコメントしました"
+        
+      when "story" then
+        "#{visiter}が#{your_novel}の続編を投稿しました"
     end
   end
   

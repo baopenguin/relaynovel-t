@@ -101,6 +101,11 @@ class NovelsController < ApplicationController
       parent_info
       grandparent_info
       fin_info
+      
+      novel = Novel.find_by(id: @novel.parent_id)
+      
+      novel.create_notification_story!(current_user)
+      
       flash[:success] = 'ストーリーを投稿しました。'
       redirect_to user_path(current_user)
     else
@@ -238,5 +243,6 @@ class NovelsController < ApplicationController
     
     return @nextcount
   end
+  
   
 end

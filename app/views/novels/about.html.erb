@@ -4,13 +4,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12 balloon5">
+    <div class="col-12 balloon5 text-center">
       <div class="faceicon">
         <img src="<%= asset_path "tori.jpg" %>" class="ml-5">
       </div>
       <div class="chatting">
         <div class="says mr-5" style="margin-left:150px;">
-          <p style="font-weight:bold; font-size:16px;">RelayNovelは、「みんなが書いたストーリーをみんなでリレーする」をコンセプトに開発されたそうだよ！<br>詳しくは以下を確認してね</p>
+          <p style="font-weight:bold; font-size:16px;">RelayNovelは、「みんなが書いたストーリーをみんなでリレーする」をコンセプトに開発されたそうだよ！<br>詳しくは以下を確認してね！</p>
         </div>
       </div>
     </div>
@@ -23,6 +23,7 @@
       <h2>RelayNovelについて</h2>
       <a href="<%= novels_about_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_about_path) %>"><i class="fas fa-desktop icon"></i>サイト紹介</a>
       <a href="<%= novels_qanda_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_qanda_path) %>"><i class="far fa-comments icon"></i>Q & A</a>
+      <a href="<%= form_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(form_path) %>"><i class="far fa-envelope icon"></i>お問い合わせ</a>
       <h2>ストーリーを探す</h2>
       <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
       <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
