@@ -1,11 +1,13 @@
 <div>
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-  <h4 class="sub-title">通知</h4>
+  <div>
+    <h3 class="ribbon1 mb-5" style="display:block; width:15%;">通知</h3>
+  </div>
   <% if @notifications.exists? %>
     <div class="users-index">
       <%= render notifications %>
     </div>
   <% else %>
-    <p>通知はありません</p>
+    <p class="nothing text-center">通知はありません。</p>
   <% end %>
 </div>

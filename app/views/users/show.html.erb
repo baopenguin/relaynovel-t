@@ -5,20 +5,17 @@
         <p><%= @user.name %></p>
       </div>
       <div class="sample_box3_2">
-        <p class="pre-wrap"><%= @user.self_introduction %></p>
+        <p class="pre-wrap" style="color:gray;"><%= @user.self_introduction %></p>
+        <a href="<%= notifications_path %>" class="btn-animation-02 mb-2 show-notice"><span class="btn-span"><i class="fas fa-bell mr-2"></i>通知
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
+        </span></a>
         <% if @user.twitter.present? %>
           <a href="https://twitter.com/<%= @user.twitter %>" target="blank" class="btn-animation-02 mb-2 show-twitter"><span class="btn-span"><i class="fab fa-twitter mr-2"></i>Twitter</span></a>
         <% end %>
         <% if current_user == @user %>
           <a href="<%= edit_user_path %>" class="btn-animation-02"><span class="btn-span">プロフィールを編集</span></a>
-          
-          <% if unchecked_notifications.any? %>
-            <i class="fa fa-circle" style="color: gold;"></i>
-          <% end %>
-          <li>
-            <%= link_to "NOTICE", notifications_path, class: "btn-default" %>
-          </li>
-          
         <% end %>
       </div>
       <%= render 'relationships/follow_button', user: @user %>

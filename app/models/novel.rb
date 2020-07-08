@@ -61,10 +61,10 @@ class Novel < ApplicationRecord
   end
   
   def create_notification_story!(current_user)
-    # すでに「続編作成」されているか検索
-    temp_s = Notification.where(["visitor_id = ? and visited_id = ? and novel_id = ? and action = ? ", current_user.id, user_id, id, 'story'])
-    # いいねされていない場合のみ、通知レコードを作成
-    if temp_s.blank?
+    # # すでに「続編作成」されているか検索
+    # temp_s = Notification.where(["visitor_id = ? and visited_id = ? and novel_id = ? and action = ? ", current_user.id, user_id, id, 'story'])
+    # # いいねされていない場合のみ、通知レコードを作成
+    # if temp_s.blank?
       notification = current_user.active_notifications.new(
         novel_id: id,
         visited_id: user_id,
@@ -75,7 +75,6 @@ class Novel < ApplicationRecord
         notification.checked = true
       end
       notification.save if notification.valid?
-    end
   end
 
 end
