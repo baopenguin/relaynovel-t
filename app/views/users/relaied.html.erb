@@ -3,6 +3,13 @@
     <div class="sample_box_title"><p><%= @user.name %></p></div>
     <div class="sample_box3_2">
       <p class="pre-wrap"><%= @user.self_introduction %></p>
+      <% if @user == current_user %>
+        <a href="<%= notifications_path %>" class="btn-animation-02 mb-2 show-notice"><span class="btn-span"><i class="fas fa-bell mr-2"></i>通知
+          <% if unchecked_notifications.any? %>
+            <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
+        </span></a>
+      <% end %>
       <% if @user.twitter.present? %>
         <a href="https://twitter.com/<%= @user.twitter %>" target="blank" class="btn-animation-02 mb-2 show-twitter"><span class="btn-span"><i class="fab fa-twitter mr-2"></i>Twitter</span></a>
       <% end %>
@@ -18,6 +25,24 @@
     <a href="<%= followings_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(followings_user_path(@user)) %>">フォロー  <span class="badge badge-secondary"><%= @count_followings %></span></a>
     <a href="<%= followers_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(followers_user_path(@user)) %>">フォロワー  <span class="badge badge-secondary"><%= @count_followers %></span></a>
     <a href="<%= likes_user_path %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(likes_user_path) %>">いいね　<span class="badge badge-secondary"><%= @count_favorites %></span></a>
-    <%= render 'novels/relaied_novels', novels: @novels, novel_all: @novel_all %>
+    <%= render 'novels/relaied_novels', novels: @novels_r, novel_all: @novel_all %>
+    <% unless @novels_r.present? %>
+        <div class="box8 mb-0">
+          <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
+          <p class="nothing">投稿しているリレーストーリーがありません。</p>
+          <div class="balloon5">
+            <div class="faceicon">
+              <img src="<%= asset_path "pen.jpg" %>" class="ml-4">
+            </div>
+            <div class="question">
+              <div class="chatting">
+                <div class="says mr-5">
+                  <p style="font-weight:bold; font-size:16px; cursor:pointer;"><a href="<%= novels_unfinished_path %>">未完ストーリー</a>から続きを書いてみたいストーリーを探そう！</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
   </div>
 </div>

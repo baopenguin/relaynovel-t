@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:index, :edit, :update, :destroy, :form]
   before_action :still, only:[:index]
   
   def index
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @novels = @user.novels.order(id: :desc).page(params[:page])
+    @novels_s = @novels.where(parent_id: @follow_novel)
     counts(@user)
     counts_follow_unfollow(@user)
   end
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   def relaied
     @user = User.find(params[:id])
     @novels = @user.novels.order(id: :desc).page(params[:page])
+    @novels_r = @novels.where.not(parent_id: @follow_novel)
     @novel_all = Novel.all
     
     counts(@user)

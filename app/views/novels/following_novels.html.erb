@@ -22,9 +22,9 @@
       <h2>ストーリーを探す</h2>
       <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
       <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
-      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
+      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %> <%= 'active-tag' if current_page?(novels_ranking_relay_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
       <% if current_user.present? %>
-        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
+        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %> <%= 'active-tag' if current_page?(novels_following_relay_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
       <% end %>
     </div>
     
@@ -38,8 +38,29 @@
           <i class="fa fa-chevron-right"></i> リレーストーリー
         </a>
       </div>
+
+      <% unless @f.present? %>
+        <div class="box8 mb-0">
+          <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
+          <p class="nothing">フォローユーザーの中にオリジナルストーリーを投稿しているユーザーはいません。</p>
+          <div class="balloon5">
+            <div class="faceicon">
+              <img src="<%= asset_path "pen.jpg" %>" class="ml-4">
+            </div>
+            <div class="question">
+              <div class="chatting">
+                <div class="says mr-5">
+                  <p style="font-weight:bold; font-size:16px; cursor:pointer;"><a href="<%= root_path %>">完結済みストーリー</a>や<a href="<%= novels_unfinished_path %>">未完ストーリー</a>から気になるユーザーを探そう！</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      
       <% unless @timeline == nil %>
         <% @timeline.each do |novel| %>
+          <% @comments = novel.comments.order("RAND()").limit(1) %>
           <% if novel.id == novel.parent_id %>
             <a href="<%= novel_path(novel) %>" class="linkbox">
               <div class="novel-border media-body show">
@@ -58,8 +79,8 @@
                   </div>
                   <% @comments.each do |c| %>
                   <div class="col-md-12 mt-3 pl-0">
-                    <p class="btn-flat-logo active-ranking">おすすめレビュー</p>
                     <div class="mt-0 aboutback" style="text-align:left; height:100%">
+                      <p class="btn-flat-logo active-ranking">おすすめレビュー</p>
                       <a href="<%= user_path(c.user) %>" class="reviewname"><%= c.user.name %></a>
                       <p class="pre-wrap"><%= c.content %></p>
                       <p style="font-size:13px;"><%= c.created_at.strftime('%Y年%m月%d日 %H:%M') %></p> 

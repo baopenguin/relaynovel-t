@@ -27,9 +27,9 @@
       <h2>ストーリーを探す</h2>
       <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
       <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
-      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
+      <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %> <%= 'active-tag' if current_page?(novels_ranking_relay_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
       <% if current_user.present? %>
-        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
+        <a href="<%= novels_following_novels_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_following_novels_path) %> <%= 'active-tag' if current_page?(novels_following_relay_path) %>"><i class="fas fa-user-friends icon"></i>タイムライン</a>
       <% end %>
     </div>
 

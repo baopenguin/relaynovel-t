@@ -1,6 +1,4 @@
-<% unless novels.present? %>
-  <p class="nothing">ストーリーはありません。</p>
-<% else %>
+<% if novels.present? %>
   <% novels.each do |novel| %>
     <% if novel.id != novel.parent_id %>
       <div class="novel-border media-body show mt-4 pr-4">

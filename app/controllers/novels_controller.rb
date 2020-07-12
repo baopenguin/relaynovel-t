@@ -30,12 +30,16 @@ class NovelsController < ApplicationController
   
   def ranking_relay
     @ranking = Novel.find(Favorite.group(:novel_id).order('count(novel_id) desc').pluck(:novel_id))
+    
     @order = 0
   end
   
   def following_novels
-    @user  = current_user
+    @user = current_user
     @users = @user.followings
+    @novels = Novel.all
+    @follow_novel = @novels.where(user_id: @users)
+    @f = @follow_novel.where(parent_id: @follow_novel)
     @novels = []
     if @users.present?
       @users.each do |user|
@@ -53,6 +57,9 @@ class NovelsController < ApplicationController
   def following_relay
     @user  = current_user
     @users = @user.followings
+    @novels = Novel.all
+    @follow_novel = @novels.where(user_id: @users)
+    @f = @follow_novel.where.not(parent_id: @follow_novel)
     @novels = []
     if @users.present?
       @users.each do |user|
@@ -215,8 +222,10 @@ class NovelsController < ApplicationController
     
   def before_destroy_check
     @g = Novel.find_by(id: @novel.grandparent_id)
-    @g.fin = 0
-    @g.save
+    if @g.present?
+      @g.fin = 0
+      @g.save
+    end
   end 
   
   def before_index
