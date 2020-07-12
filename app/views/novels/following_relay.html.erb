@@ -60,7 +60,8 @@
       
       <% unless @timeline == nil %>
         <% @timeline.each do |novel| %>
-          <% @comments = novel.comments.order("RAND()").limit(1) %>
+          <% rand = Rails.env.production? ? "RANDOM()" : "rand()" %>
+          <% @comments = novel.comments.order(rand).limit(1) %>
           <% unless novel.id == novel.parent_id %>
             <a href="<%= novel_path(novel) %>" class="linkbox">
               <div class="novel-border media-body show">

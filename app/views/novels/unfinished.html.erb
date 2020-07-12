@@ -31,7 +31,8 @@
     <div class="col-md-9">
       <h2 class="toppage-title mb-0"><i class="fas fa-egg icon mr-2 pt-2" style="color: #5fde7c; font-size:30px;"></i>未完ストーリー</h2>
       <% @novels.each do |novel| %>
-      <% @comments = novel.comments.order("RAND()").limit(1) %>
+        <% rand = Rails.env.production? ? "RANDOM()" : "rand()" %>
+        <% @comments = novel.comments.order(rand).limit(1) %>
         <% if novel.parent_id == novel.grandparent_id && novel.fin == 0 && novel.id == novel.parent_id %>
           <a href="<%= novel_path(novel) %>" class="linkbox">
             <div class="novel-border media-body show">
