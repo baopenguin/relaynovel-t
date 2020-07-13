@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @novels = @user.novels.order(id: :desc).page(params[:page])
-    @novels_s = @novels.where(parent_id: @follow_novel)
+    @novels_s = @novels.where(parent_id: @novels)
     counts(@user)
     counts_follow_unfollow(@user)
   end
