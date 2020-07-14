@@ -131,7 +131,7 @@ class NovelsController < ApplicationController
   def destroy
     @novel.destroy
     flash[:success] = 'ストーリーを削除しました。'
-    redirect_to root_url
+    redirect_back(fallback_location: root_path)
   end
   
   def about

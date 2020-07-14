@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @novels = @user.novels.order(id: :desc).page(params[:page])
+    @novels = @user.novels.order(id: :desc)
     @novels_s = @novels.where(parent_id: @novels)
     counts(@user)
     counts_follow_unfollow(@user)
@@ -15,8 +15,8 @@ class UsersController < ApplicationController
   
   def relaied
     @user = User.find(params[:id])
-    @novels = @user.novels.order(id: :desc).page(params[:page])
-    @novels_r = @novels.where.not(parent_id: @follow_novel)
+    @novels = @user.novels.order(id: :desc)
+    @novels_r = @novels.where.not(parent_id: @novels)
     @novel_all = Novel.all
     
     counts(@user)
@@ -70,14 +70,14 @@ class UsersController < ApplicationController
   
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings.order(id: :desc).page(params[:page])
+    @followings = @user.followings.order(id: :desc)
     counts_follow_unfollow(@user)
     counts(@user)
   end
   
   def followers
     @user = User.find(params[:id])
-    @followers = @user.followers.order(id: :desc).page(params[:page])
+    @followers = @user.followers.order(id: :desc)
     counts_follow_unfollow(@user)
     counts(@user)
   end

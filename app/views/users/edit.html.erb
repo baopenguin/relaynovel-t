@@ -39,6 +39,8 @@
         <%= f.password_field :password_confirmation, class: 'form-control', placeholder: '変更しない場合は空白' %>
       </div>
       
+      <%= f.hidden_field :checkbox_user, :value => true %>
+      
       <%= f.submit 'この内容で編集する', class: 'btn login-account-btn' %>
     <% end %>
     
