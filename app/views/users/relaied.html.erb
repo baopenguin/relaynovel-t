@@ -26,7 +26,7 @@
     <a href="<%= followers_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(followers_user_path(@user)) %>">フォロワー  <span class="badge badge-secondary"><%= @count_followers %></span></a>
     <a href="<%= likes_user_path %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(likes_user_path) %>">いいね　<span class="badge badge-secondary"><%= @count_favorites %></span></a>
     <%= render 'novels/relaied_novels', novels: @novels, novel_all: @novel_all %>
-    <% unless @novels_r.present? %>
+    <% if @count_novels_relay == 0 %>
       <div class="box8 mb-0">
         <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
         <p class="nothing">投稿しているリレーストーリーがありません。</p>
