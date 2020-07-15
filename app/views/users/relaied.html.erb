@@ -25,24 +25,24 @@
     <a href="<%= followings_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(followings_user_path(@user)) %>">フォロー  <span class="badge badge-secondary"><%= @count_followings %></span></a>
     <a href="<%= followers_user_path(@user) %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(followers_user_path(@user)) %>">フォロワー  <span class="badge badge-secondary"><%= @count_followers %></span></a>
     <a href="<%= likes_user_path %>" class="btn-flat-vertical-border <%= 'active-show' if current_page?(likes_user_path) %>">いいね　<span class="badge badge-secondary"><%= @count_favorites %></span></a>
-    <%= render 'novels/relaied_novels', novels: @novels_r, novel_all: @novel_all %>
+    <%= render 'novels/relaied_novels', novels: @novels, novel_all: @novel_all %>
     <% unless @novels_r.present? %>
-        <div class="box8 mb-0">
-          <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
-          <p class="nothing">投稿しているリレーストーリーがありません。</p>
-          <div class="balloon5">
-            <div class="faceicon">
-              <img src="<%= asset_path "pen.jpg" %>" class="ml-4">
-            </div>
-            <div class="question">
-              <div class="chatting">
-                <div class="says mr-5">
-                  <p style="font-weight:bold; font-size:16px;"><a href="<%= novels_unfinished_path %>">未完ストーリー</a>から続きを書いてみたいストーリーを探そう！</p>
-                </div>
+      <div class="box8 mb-0">
+        <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
+        <p class="nothing">投稿しているリレーストーリーがありません。</p>
+        <div class="balloon5">
+          <div class="faceicon">
+            <img src="<%= asset_path "pen.jpg" %>" class="ml-4">
+          </div>
+          <div class="question">
+            <div class="chatting">
+              <div class="says mr-5">
+                <p style="font-weight:bold; font-size:16px;"><a href="<%= novels_unfinished_path %>">未完ストーリー</a>から続きを書いてみたいストーリーを探そう！</p>
               </div>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

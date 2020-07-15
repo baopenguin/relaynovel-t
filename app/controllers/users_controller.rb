@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   
   def relaied
     @user = User.find(params[:id])
-    @novels = @user.novels.order(id: :desc)
+    @novels = @user.novels.order(id: :desc) 
     @novels_r = @novels.where.not(parent_id: @novels)
     @novel_all = Novel.all
     
