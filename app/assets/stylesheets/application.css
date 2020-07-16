@@ -1084,6 +1084,22 @@ border-bottom: 2px solid #444;
   .taikai{
     width:35%;
   }
+  
+  .dropdwon{
+    width:60%;
+  }
+  
+  .dropdown button{
+    font-size:10px;
+  }
+  
+  .login-account{
+    width:75%;
+  }
+  
+  .login-account h1{
+    font-size:20px;
+  }
 }
 
 .user_follow{
@@ -1136,3 +1152,8 @@ border-bottom: 2px solid #444;
     display:none;
   }
 }
+
+.submenue button{
+  font-size:10px;
+}
+

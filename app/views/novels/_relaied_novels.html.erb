@@ -4,7 +4,7 @@
       <div class="novel-border media-body show mt-4 pr-4">
         <a href="<%= novel_path(novel) %>" class="linkbox">
           <p class='font font-weight-bold pre-wrap' style='font-size:20px;'><%= novel.content.truncate(100) %></p>
-          <p class="secrethover pt-2 mb-0"><i class="fas fa-book-reader"></i>　カーソルを合わせて詳細を確認する</p>
+          <p class="secrethover pt-2 mb-0"><i class="fas fa-mouse-pointer"></i>　ストーリーの詳細を確認する</p>
           <div class="form-color mt-3 secret">
             <% @grand = Novel.find_by(id: novel.grandparent_id) %>
             <% @parent = Novel.find_by(id: novel.parent_id) %>
