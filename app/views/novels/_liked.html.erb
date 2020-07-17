@@ -20,7 +20,7 @@
         </div>
       <% else %>
         <p class='font font-weight-bold pre-wrap' style='font-size:20px;'><%= novel.content.truncate(100) %></p>
-        <p class="secrethover mb-0 pt-2"><i class="fas fa-book-reader"></i>　カーソルを合わせて詳細を確認する</p>
+        <p class="secrethover mb-0 pt-2"><i class="fas fa-mouse-pointer"></i>　ストーリーの詳細を確認する</p>
         <div class="form-color mt-3 secret">
           <object><p class="display hover secret font-weight-bold" style="color:#494949;">著者：<%= link_to novel.user.name, user_path(novel.user), class:'text-reset' %></p></object>
           
