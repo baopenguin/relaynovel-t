@@ -108,11 +108,11 @@
     <% if @next_novels.present? %>
       <% unless @novel.id != @novel.parent_id && @novel.fin == 1 %>
         <% if @novel.id == @novel.parent_id %>
-          <h1 class="heading mt-3" style="border-bottom:5px solid #ffa8a8;">いま　<span>投稿されている続きのストーリーを読む</span></h1>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffa8a8;">いま　<span>投稿されているリレーストーリーを読む</span></h1>
         <% elsif @novel.id != @novel.parent_id && @novel.parent_id == @novel.grandparent_id %>
-          <h1 class="heading mt-3" style="border-bottom:5px solid #a8ffd3;">いま　<span>投稿されている続きのストーリーを読む</span></h1>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #a8ffd3;">いま　<span>投稿されているリレーストーリーを読む</span></h1>
         <% else %>
-          <h1 class="heading mt-3" style="border-bottom:5px solid #ffffa8;">いま　<span>投稿されている続きのストーリーを読む</span></h1>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffffa8;">いま　<span>投稿されているリレーストーリーを読む</span></h1>
         <% end %>
         <div class="container">
           <div class="row">
@@ -144,12 +144,31 @@
     <% else %>
       <% unless @novel.id != @novel.parent_id && @novel.fin == 1 %>
         <% if @novel.id == @novel.parent_id %>
-          <h1 class="heading mt-3" style="border-bottom:5px solid #ffa8a8;">いま　<span>投稿されている続きのストーリーはありません</span></h1>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffa8a8;">いま　<span>投稿されているリレーストーリーはありません</span></h1>
         <% elsif @novel.id != @novel.parent_id && @novel.parent_id == @novel.grandparent_id %>
-          <h1 class="heading mt-3" style="border-bottom:5px solid #a8ffd3;">いま　<span>投稿されている続きのストーリーはありません</span></h1>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #a8ffd3;">いま　<span>投稿されているリレーストーリーはありません</span></h1>
         <% else %>
-          <h1 class="heading mt-3" style="border-bottom:5px solid #ffffa8;">いま　<span>投稿されている続きのストーリーはありません</span></h1>
+          <h1 class="heading mt-3" style="border-bottom:5px solid #ffffa8;">いま　<span>投稿されているリレーストーリーはありません</span></h1>
         <% end %>
+         <div class="balloon5">
+          <div class="faceicon">
+            <img src="<%= asset_path "tori.jpg" %>" class="ml-4">
+          </div>
+          <div class="question">
+            <div class="chatting">
+              <div class="says mr-5">
+                <% unless @novel.parent_id == @novel.grandparent_id %>
+                  <% if @novel.fin == 0 %>
+                    <p style="font-weight:bold; font-size:16px;">このストーリーのバトンを貰って<a href="<%= last_novel_path %>">リレーストーリーを投稿</a>してみよう！</p>
+                  <% end %>
+                <% else %>
+                  <p style="font-weight:bold; font-size:16px;">このストーリーのバトンを貰って<a href="<%= continue_novel_path %>">リレーストーリーを投稿</a>してみよう！</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <% end %>
     <% end %>
 
