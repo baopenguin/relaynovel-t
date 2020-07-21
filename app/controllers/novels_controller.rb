@@ -114,7 +114,7 @@ class NovelsController < ApplicationController
       novel.create_notification_story!(current_user)
       
       flash[:success] = 'ストーリーを投稿しました。'
-      redirect_to user_path(current_user)
+      redirect_to novel_path(@novel)
     else
       @novels = current_user.novels.order(id: :desc).page(params[:page])
       flash[:danger] = 'ストーリーの投稿に失敗しました。'
@@ -131,7 +131,7 @@ class NovelsController < ApplicationController
   def destroy
     @novel.destroy
     flash[:success] = 'ストーリーを削除しました。'
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
   
   def about
