@@ -50,7 +50,7 @@ window.onload = $(document).on('turbolinks:load',function(){
  $("#comment").on("keyup", function() {
    let countNum = String($(this).val().length);
    
-   if(countNum > 300 || countNum == 0){
+   if(countNum > 250 || countNum == 0){
     $("#counter").text("現在 " + countNum + " 文字").addClass("jscount");
    }else{
     $("#counter").text("現在 " + countNum + " 文字").removeClass("jscount");

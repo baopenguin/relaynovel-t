@@ -124,7 +124,7 @@
                 
           <% if current_user.present? %>
             <%= form_with(model: [@novel, @comment], local: true) do |f| %>
-              <%= f.text_area :content, id:"comment", class: "form-control mt-3", rows: 5, placeholder: '300文字まで入力できます' %>
+              <%= f.text_area :content, id:"comment", class: "form-control mt-3", rows: 5, placeholder: '250文字まで入力できます' %>
               <p id="counter" class="jcount jscount mt-1 text-right font-weight-bold">現在 0 文字</p>
               <%= button_tag type: "submit", class: "btn btn-success mr-0 mt-1", style:"font-weight:bold;" do %>
                 <i class="far fa-comments"></i> レビューを投稿する
