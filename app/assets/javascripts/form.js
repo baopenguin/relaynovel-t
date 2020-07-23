@@ -2,7 +2,7 @@ window.onload = $(document).on('turbolinks:load',function(){
  $("#input-text").on("keyup", function() {
    let countNum = String($(this).val().length);
    
-   if(countNum > 50000 || countNum < 50){
+   if(countNum > 20000 || countNum < 50){
     $("#counter").text("現在 " + countNum + " 文字").addClass("jscount");
    }else{
     $("#counter").text("現在 " + countNum + " 文字").removeClass("jscount");

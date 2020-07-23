@@ -21,7 +21,7 @@
   
   <div class="form-group mt-3">
     <%= f.label :content, 'ストーリー本文', class:'form-color' %><span class="ml-1 attention">*</span>
-    <%= f.text_area :content, rows: "10", class:'form-control', id: "input-text", placeholder: '50～50,000文字の間で入力してください' %>
+    <%= f.text_area :content, rows: "10", class:'form-control', id: "input-text", placeholder: '50～20,000文字の間で入力してください' %>
     <p id="counter" class="jcount jscount mt-1 text-right font-weight-bold">現在 0 文字</p>
   </div>
   <%= f.hidden_field :title, :value => @novel.title %>

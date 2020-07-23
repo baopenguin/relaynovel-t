@@ -12,7 +12,7 @@ class Novel < ApplicationRecord
   
   validates :title, presence: true, length: { maximum: 50 }
   validates :outline, presence: true, length: { maximum: 1000 }
-  validates :content, presence: true, length: { minimum: 50, maximum: 50000}
+  validates :content, presence: true, length: { minimum: 50, maximum: 20000}
   validates :fin, presence: true
   
   def create_notification_like!(current_user)
