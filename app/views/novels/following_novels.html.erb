@@ -15,13 +15,13 @@
 <div class="container">
   <div class="row">
     <div class="side col-md-3">
-      <h2>RelayNovelについて</h2>
+      <h2 style="color: #494949;">RelayNovelについて</h2>
       <a href="<%= novels_about_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_about_path) %>"><i class="fas fa-desktop icon"></i>サイト紹介</a>
       <a href="<%= novels_qanda_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_qanda_path) %>"><i class="far fa-comments icon"></i>Q & A</a>
       <% if current_user.present? %>
         <a href="<%= form_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(form_path) %>"><i class="far fa-envelope icon"></i>お問い合わせ</a>
       <% end %>
-      <h2>ストーリーを探す</h2>
+      <h2 style="color: #494949;">ストーリーを探す</h2>
       <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
       <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
       <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %> <%= 'active-tag' if current_page?(novels_ranking_relay_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
@@ -31,7 +31,7 @@
     </div>
     
     <div class="col-md-9">
-      <h2 class="toppage-title mb-0"><i class="fas fa-user-friends icon mr-2 pt-2" style="color: #FFA8A8; font-size:30px;"></i>タイムライン</h2>
+      <h2 class="toppage-title mb-0" style="color: #494949;"><i class="fas fa-user-friends icon mr-2 pt-2" style="color: #FFA8A8; font-size:30px;"></i>タイムライン</h2>
       <div class="mb-3">
         <a href="<%= novels_following_novels_path %>" class="btn-flat-logo <%= 'active-ranking' if current_page?(novels_following_novels_path) %>">
           <i class="fa fa-chevron-right"></i> オリジナルストーリー
@@ -69,8 +69,8 @@
               <div class="novel-border media-body show">
                 <p class='font-weight-bold pre-wrap font mr-3' style='font-size:20px;'><%= novel.outline.truncate(100) %></p>
                 <div class="form-color">
-                  <p class="display title">『<%= novel.title %>』</p>
-                  <object><p class="display">著者：<%= link_to novel.user.name, user_path(novel.user), class:'text-reset' %></p></object>
+                  <p class="display title" style="color: #494949;">『<%= novel.title %>』</p>
+                  <object><p class="display" style="color: #494949;">著者：<%= link_to novel.user.name, user_path(novel.user), class:'text-reset' %></p></object>
                   <div class="pv-fav-foot-time mt-2">
                     <p class=" icon-float mr-2"><i class="fas fa-shoe-prints icon"></i><%=  novel.impressionist_count %></p>
                     <% unless novel.parent_id != novel.grandparent_id && novel.fin != 0 %>
@@ -84,9 +84,9 @@
                   <div class="col-md-12 mt-3 pl-0">
                     <div class="mt-0 aboutback" style="text-align:left; height:100%">
                       <p class="btn-flat-logo active-ranking">おすすめレビュー</p>
-                      <a href="<%= user_path(c.user) %>" class="reviewname"><%= c.user.name %></a>
-                      <p class="pre-wrap"><%= c.content %></p>
-                      <p style="font-size:13px;"><%= c.created_at.strftime('%Y年%m月%d日 %H:%M') %></p> 
+                      <a href="<%= user_path(c.user) %>" class="reviewname" style="color: #494949;"><%= c.user.name %></a>
+                      <p class="pre-wrap" style="color: gray;"><%= c.content %></p>
+                      <p style="font-size:13px; color:gray;"><%= c.created_at.strftime('%Y年%m月%d日 %H:%M') %></p> 
                     </div>
                   </div>
                 <% end %>

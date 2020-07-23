@@ -805,7 +805,7 @@ border-bottom: 2px solid #444;
 	width: 100%;
 	height: 1px;
 	background: #000;
-	background: linear-gradient(-45deg, transparent, #009FB7 10%, #009FB7 90%, transparent);
+	background: linear-gradient(-45deg, transparent, gray 10%, gray 90%, transparent);
 }
 .honbun span{
 	position: relative;
@@ -814,7 +814,7 @@ border-bottom: 2px solid #444;
 	padding: 0 20px;
 	background-color: rgb(255,255,250);
 	text-align: left;
-	color:#009FB7;
+	color:gray;
 }
 
 .box{

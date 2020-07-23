@@ -20,13 +20,13 @@
 <div class="container">
   <div class="row">
     <div class="side col-md-3">
-      <h2>RelayNovelについて</h2>
+      <h2 style="color: #494949;">RelayNovelについて</h2>
       <a href="<%= novels_about_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_about_path) %>"><i class="fas fa-desktop icon"></i>サイト紹介</a>
       <a href="<%= novels_qanda_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(novels_qanda_path) %>"><i class="far fa-comments icon"></i>Q & A</a>
       <% if current_user.present? %>
         <a href="<%= form_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(form_path) %>"><i class="far fa-envelope icon"></i>お問い合わせ</a>
       <% end %>
-      <h2>ストーリーを探す</h2>
+      <h2 style="color: #494949;">ストーリーを探す</h2>
       <a href="<%= root_path %>" class="mb-1 display index-search <%= 'active-tag' if current_page?(root_path) %>"><i class="fas fa-dove icon"></i>完結済みストーリー</a>
       <a href="<%= novels_unfinished_path %>" class="display index-search <%= 'active-tag' if current_page?(novels_unfinished_path) %>"><i class="fas fa-egg icon"></i>未完ストーリー</a>
       <a href="<%= novels_ranking_path %>" class="mt-1 display index-search <%= 'active-tag' if current_page?(novels_ranking_path) %> <%= 'active-tag' if current_page?(novels_ranking_relay_path) %>"><i class="fas fa-crown icon"></i>いいねランキング</a>
