@@ -29,16 +29,17 @@
   <%= f.hidden_field :parent_id, :value => @novel.id %>
   <%= f.hidden_field :grandparent_id, :value => @novel.grandparent_id %>
   
-  <div class="cautionbox">
+  <div class="cautionbox pb-2">
   <div class="cautionbox-title"><i class="fas fa-exclamation-triangle icon"></i>Attention</div>
-    <p class="font-weight-bold" style="color:gray;">・フォーム欄の高さは右下のつまみで調節できます。</p>
-    <p class="font-weight-bold" style="color:gray;">・入力に不備があると投稿を受け付けることができず、入力された内容がリセットされてしまいます。</p>
-    <p class="font-weight-bold" style="color:gray;">・作成された内容を後から編集することはできません。十分にご注意ください。</p>
-    <p class="font-weight-bold" style="color:gray;">・この投稿フォームではストーリーを完結させてください。以上の内容で良ければチェックをつけてストーリーの幕を下ろしてください。</p>
-    <p class="text-center"  class="font-weight-bold" style="color:gray;">
-      <%= f.check_box :fin, {required: true} %>
-      <%= f.label :fin, 'このストーリーを終わらせる', class:"font-weight-bold mt-3", style:"color:gray;" %>
-    </p>
+    <ul>
+      <li class="font-weight-bold" style="color:gray; list-style-type: disc;">フォーム欄の高さは右下のつまみで調節できます。</li>
+      <li class="font-weight-bold" style="color:gray; list-style-type: disc;">入力に不備があると投稿を受け付けることができず、入力された内容がリセットされてしまいます。</li>
+      <li class="font-weight-bold" style="color:gray; list-style-type: disc;">作成された内容を後から編集することはできません。十分にご注意ください。</li>
+      <li class="font-weight-bold" style="color:gray; list-style-type: disc;">この投稿フォームではストーリーを完結させてください。以上の内容で良ければチェックをつけてストーリーの幕を下ろしてください。</li>
+      <li class="text-center"  class="font-weight-bold" style="color:gray;">
+        <%= f.check_box :fin, {required: true} %>
+        <%= f.label :fin, 'このストーリーを終わらせる', class:"font-weight-bold mt-2 mb-0", style:"color:gray;" %>
+    </ul>
   </div>
   <%= f.submit '完結させる', class: 'btn yes-button btn-block' %>
 <% end %>
