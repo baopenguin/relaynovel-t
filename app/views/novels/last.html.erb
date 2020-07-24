@@ -6,13 +6,13 @@
   <% if @novel.id == @novel.parent_id %>
     <div class="box mb-4 mt-4">
       <h3><span style="font-size:17px;">あらすじ</span></h3>
-      <div class="inner">
+      <div class="inner" style="padding: 0 80px;">
         <p class="three pre-wrap" style="text-align:left;"><%= @novel.outline %></p>
       </div>
     </div>
   <% end %>
   <h2 class="honbun"><span style="font-size:17px;">本文</span></h2>
-    <p class="four pre-wrap" style="text-align:left;"><%= @novel.content %></p>
+    <div style="padding: 0 80px;"><p class="four pre-wrap" style="text-align:left;"><%= @novel.content %></p></div>
   <h2 class="honbun"><span style="font-size:17px;">以下のフォームでは、このストーリーをリレーし、完結させてください</span></h2>
 </div>
 

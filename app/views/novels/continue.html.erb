@@ -13,10 +13,10 @@
   <% end %>
   <% if @novel.id == @novel.parent_id %>
     <h2 class="honbun mt-2"><span style="font-size:17px;">あらすじ</span></h2>
-    <p class="three pre-wrap font" style="text-align:left;"><%= @novel.outline %></p>
+    <div style="padding: 0 80px;"><p class="three pre-wrap font" style="text-align:left;"><%= @novel.outline %></p></div>
   <% end %>
   <h2 class="honbun"><span style="font-size:17px;">本文</span></h2>
-    <p class="four pre-wrap" style="text-align:left;"><%= @novel.content %></p>
+    <div style="padding: 0 80px;"><p class="four pre-wrap" style="text-align:left;"><%= @novel.content %></p></div>
   <h2 class="honbun"><span style="font-size:17px;">以下のフォームでは、このストーリーをリレーしてください</span></h2>
 </div>
 
