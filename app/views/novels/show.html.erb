@@ -102,7 +102,7 @@
           <div class="container">
             <div class="row">
               <% unless @novel.comments.present? %>
-                <p style="font-weight:bold;">レビューはまだ投稿されておりません</p>
+                <div style="padding: 0 80px;"><p style="font-weight:bold;">レビューはまだ投稿されておりません</p></div>
               <% else %>
                 <% @novel.comments.each do |c| %>
                   <div class="col-md-4 mt-3 pl-0">
